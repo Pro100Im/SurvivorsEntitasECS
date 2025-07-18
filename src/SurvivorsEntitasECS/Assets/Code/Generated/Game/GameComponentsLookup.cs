@@ -8,45 +8,60 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Destructed = 0;
-    public const int Id = 1;
-    public const int Radius = 2;
-    public const int SelfDestructTimer = 3;
-    public const int View = 4;
-    public const int ViewPath = 5;
-    public const int ViewPrefab = 6;
-    public const int WorldPosition = 7;
-    public const int Direction = 8;
-    public const int Moving = 9;
-    public const int Speed = 10;
+    public const int Hero = 0;
+    public const int HeroAnimator = 1;
+    public const int SpriteRenderer = 2;
+    public const int Destructed = 3;
+    public const int Id = 4;
+    public const int Radius = 5;
+    public const int SelfDestructTimer = 6;
+    public const int Transform = 7;
+    public const int View = 8;
+    public const int ViewPath = 9;
+    public const int ViewPrefab = 10;
+    public const int WorldPosition = 11;
+    public const int Direction = 12;
+    public const int Moving = 13;
+    public const int Speed = 14;
+    public const int TurnedAlongDirection = 15;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
+        "Hero",
+        "HeroAnimator",
+        "SpriteRenderer",
         "Destructed",
         "Id",
         "Radius",
         "SelfDestructTimer",
+        "Transform",
         "View",
         "ViewPath",
         "ViewPrefab",
         "WorldPosition",
         "Direction",
         "Moving",
-        "Speed"
+        "Speed",
+        "TurnedAlongDirection"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(Assets.Code.GamePlay.Features.Hero.Hero),
+        typeof(Assets.Code.GamePlay.Features.Hero.HeroAnimatorComponent),
+        typeof(Assets.Code.GamePlay.Features.Hero.SpriteRendererComponent),
         typeof(Code.GamePlay.Common.Destructed),
         typeof(Code.GamePlay.Common.Id),
         typeof(Code.GamePlay.Common.Radius),
         typeof(Code.GamePlay.Common.SelfDestructTimer),
+        typeof(Code.GamePlay.Common.TransformComponent),
         typeof(Code.GamePlay.Common.View),
         typeof(Code.GamePlay.Common.ViewPath),
         typeof(Code.GamePlay.Common.ViewPrefab),
         typeof(Code.GamePlay.Common.WorldPosition),
         typeof(Code.GamePlay.Features.Movement.Direction),
         typeof(Code.GamePlay.Features.Movement.Moving),
-        typeof(Code.GamePlay.Features.Movement.Speed)
+        typeof(Code.GamePlay.Features.Movement.Speed),
+        typeof(Code.GamePlay.Features.Movement.TurnedAlongDirection)
     };
 }

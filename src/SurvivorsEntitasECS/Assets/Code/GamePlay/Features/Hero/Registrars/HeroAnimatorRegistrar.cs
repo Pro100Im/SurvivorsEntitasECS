@@ -1,26 +1,27 @@
 using Code.Gameplay.Features.Hero.Behaviours;
 using Code.Infrastructure.View.Registrars;
+using UnityEngine;
 
 namespace Code.Gameplay.Features.Hero.Registrars
 {
-  public class HeroAnimatorRegistrar : EntityComponentRegistrar
-  {
-    public HeroAnimator HeroAnimator;
-
-    public override void RegisterComponents()
+    public class HeroAnimatorRegistrar : EntityComponentRegistrar
     {
-      //Entity
-      //  .AddHeroAnimator(HeroAnimator)
-      //  .AddDamageTakenAnimator(HeroAnimator);
-    }
+        [SerializeField] private HeroAnimator _heroAnimator;
 
-    public override void UnregisterComponents()
-    {
-      //if (Entity.hasHeroAnimator)
-      //  Entity.RemoveHeroAnimator();
+        public override void RegisterComponents()
+        {
+            Entity
+              .AddHeroAnimator(_heroAnimator);
+            //.AddDamageTakenAnimator(HeroAnimator);
+        }
 
-      //if (Entity.hasDamageTakenAnimator)
-      //  Entity.RemoveDamageTakenAnimator();
+        public override void UnregisterComponents()
+        {
+            if(Entity.hasHeroAnimator)
+                Entity.RemoveHeroAnimator();
+
+            //if (Entity.hasDamageTakenAnimator)
+            //  Entity.RemoveDamageTakenAnimator();
+        }
     }
-  }
 }

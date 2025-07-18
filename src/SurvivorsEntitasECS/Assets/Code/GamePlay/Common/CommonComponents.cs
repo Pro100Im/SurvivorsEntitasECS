@@ -6,6 +6,7 @@ namespace Code.GamePlay.Common
 {
     [Game] public class Id : IComponent { public int Value; }
     [Game] public class WorldPosition : IComponent { public Vector3 Value; }
+    [Game] public class TransformComponent : IComponent { public Transform Value; }
     [Game, Meta] public class Destructed : IComponent { }
     [Game] public class View : IComponent { public IEntityView Value; }
     [Game] public class ViewPath : IComponent { public string Value; }
