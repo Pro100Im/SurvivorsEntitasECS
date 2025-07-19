@@ -26,7 +26,7 @@ using Code.Gameplay.Input.Service;
 //using Code.Infrastructure.States.Factory;
 //using Code.Infrastructure.States.GameStates;
 //using Code.Infrastructure.States.StateMachine;
-//using Code.Infrastructure.Systems;
+using Code.Infrastructure.Systems;
 //using Code.Infrastructure.View.Factory;
 //using Code.Meta.UI.GoldHolder.Service;
 //using Code.Meta.UI.Shop;
@@ -135,7 +135,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindSystemFactory()
         {
-            //Container.Bind<ISystemFactory>().To<SystemFactory>().AsSingle();
+            Container.Bind<ISystemFactory>().To<SystemFactory>().AsSingle();
         }
 
         private void BindInfrastructureServices()
