@@ -9,6 +9,7 @@ namespace Code.Infrastructure.View
   {
     private GameEntity _entity;
     private ICollisionRegistry _collisionRegistry;
+
     public GameEntity Entity => _entity;
 
     [Inject]

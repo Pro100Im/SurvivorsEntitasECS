@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.GamePlay.Common.SelfDestructTimer selfDestructTimer { get { return (Code.GamePlay.Common.SelfDestructTimer)GetComponent(GameComponentsLookup.SelfDestructTimer); } }
+    public Code.Common.SelfDestructTimer selfDestructTimer { get { return (Code.Common.SelfDestructTimer)GetComponent(GameComponentsLookup.SelfDestructTimer); } }
     public bool hasSelfDestructTimer { get { return HasComponent(GameComponentsLookup.SelfDestructTimer); } }
 
     public void AddSelfDestructTimer(float newValue) {
         var index = GameComponentsLookup.SelfDestructTimer;
-        var component = (Code.GamePlay.Common.SelfDestructTimer)CreateComponent(index, typeof(Code.GamePlay.Common.SelfDestructTimer));
+        var component = (Code.Common.SelfDestructTimer)CreateComponent(index, typeof(Code.Common.SelfDestructTimer));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceSelfDestructTimer(float newValue) {
         var index = GameComponentsLookup.SelfDestructTimer;
-        var component = (Code.GamePlay.Common.SelfDestructTimer)CreateComponent(index, typeof(Code.GamePlay.Common.SelfDestructTimer));
+        var component = (Code.Common.SelfDestructTimer)CreateComponent(index, typeof(Code.Common.SelfDestructTimer));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

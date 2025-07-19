@@ -21,7 +21,7 @@ using Code.Gameplay.Input.Service;
 //using Code.Gameplay.StaticData;
 //using Code.Gameplay.Windows;
 //using Code.Infrastructure.AssetManagement;
-//using Code.Infrastructure.Identifiers;
+using Code.Infrastructure.Identifiers;
 //using Code.Infrastructure.Loading;
 //using Code.Infrastructure.States.Factory;
 //using Code.Infrastructure.States.GameStates;
@@ -141,7 +141,7 @@ namespace Code.Infrastructure.Installers
         private void BindInfrastructureServices()
         {
             Container.BindInterfacesTo<BootstrapInstaller>().FromInstance(this).AsSingle();
-            //Container.Bind<IIdentifierService>().To<IdentifierService>().AsSingle();
+            Container.Bind<IIdentifierService>().To<IdentifierService>().AsSingle();
         }
 
         private void BindAssetManagementServices()

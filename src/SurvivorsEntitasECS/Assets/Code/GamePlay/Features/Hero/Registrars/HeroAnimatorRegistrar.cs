@@ -10,8 +10,7 @@ namespace Code.Gameplay.Features.Hero.Registrars
 
         public override void RegisterComponents()
         {
-            Entity
-              .AddHeroAnimator(_heroAnimator);
+            Entity.AddHeroAnimator(_heroAnimator);
             //.AddDamageTakenAnimator(HeroAnimator);
         }
 

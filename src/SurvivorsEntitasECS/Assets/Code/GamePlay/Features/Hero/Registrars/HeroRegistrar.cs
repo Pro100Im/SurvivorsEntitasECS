@@ -1,47 +1,26 @@
-using Code.Common.Entity;
-using Code.Gameplay.Features.Hero.Behaviours;
-using Entitas;
+using Code.Infrastructure.View.Registrars;
 using UnityEngine;
 
 namespace Code.GamePlay.Features.Hero.Registrars
 {
-    public class HeroRegistrar : MonoBehaviour
+    public class HeroRegistrar : EntityComponentRegistrar
     {
         [SerializeField] private float _speed = 2;
-        [Space]
-        [SerializeField] private HeroAnimator _heroAnimator;
 
-        private GameEntity _entity;
-
-        private void Awake()
+        public override void RegisterComponents()
         {
-            _entity = CreateEntity.Empty();
-            _entity.AddTransform(transform);
-            _entity.AddWorldPosition(transform.position);
-            _entity.AddDirection(Vector2.zero);
-            _entity.AddSpeed(_speed);
-            _entity.AddHeroAnimator(_heroAnimator);
-            _entity.AddSpriteRenderer(_heroAnimator.SpriteRenderer);
-            _entity.isHero = true;
-            _entity.isTurnedAlongDirection = true;
+            Entity.AddWorldPosition(transform.position);
+            Entity.AddDirection(Vector2.zero);
+            Entity.AddSpeed(_speed);
+            Entity.isHero = true;
+            Entity.isTurnedAlongDirection = true;
         }
 
-        //public override void RegisterComponents()
-        //{
-        //    Entity.AddTransform(transform);
-        //    Entity.AddWorldPosition(transform.position);
-        //    Entity.AddDirection(Vector2.zero);
-        //    Entity.AddSpeed(_speed);
-        //    Entity.isHero = true;
-        //}
-
-        //public override void UnregisterComponents()
-        //{
-        //    Entity.RemoveTransform();
-        //    Entity.RemoveWorldPosition();
-        //    Entity.RemoveDirection();
-        //    Entity.RemoveSpeed();
-        //    Entity.isHero = false;
-        //}
+        public override void UnregisterComponents()
+        {
+            Entity.RemoveWorldPosition();
+            Entity.RemoveDirection();
+            Entity.RemoveSpeed();
+        }
     }
 }

@@ -12,34 +12,42 @@ public static class GameComponentsLookup {
     public const int HeroAnimator = 1;
     public const int SpriteRenderer = 2;
     public const int Destructed = 3;
-    public const int Id = 4;
-    public const int Radius = 5;
-    public const int SelfDestructTimer = 6;
-    public const int Transform = 7;
-    public const int View = 8;
-    public const int ViewPath = 9;
-    public const int ViewPrefab = 10;
+    public const int SelfDestructTimer = 4;
+    public const int View = 5;
+    public const int ViewPath = 6;
+    public const int ViewPrefab = 7;
+    public const int Id = 8;
+    public const int Radius = 9;
+    public const int Transform = 10;
     public const int WorldPosition = 11;
-    public const int Direction = 12;
-    public const int Moving = 13;
-    public const int Speed = 14;
-    public const int TurnedAlongDirection = 15;
+    public const int Enemy = 12;
+    public const int EnemyAnimator = 13;
+    public const int EnemyTypeId = 14;
+    public const int SpawnTimer = 15;
+    public const int Direction = 16;
+    public const int Moving = 17;
+    public const int Speed = 18;
+    public const int TurnedAlongDirection = 19;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 20;
 
     public static readonly string[] componentNames = {
         "Hero",
         "HeroAnimator",
         "SpriteRenderer",
         "Destructed",
-        "Id",
-        "Radius",
         "SelfDestructTimer",
-        "Transform",
         "View",
         "ViewPath",
         "ViewPrefab",
+        "Id",
+        "Radius",
+        "Transform",
         "WorldPosition",
+        "Enemy",
+        "EnemyAnimator",
+        "EnemyTypeId",
+        "SpawnTimer",
         "Direction",
         "Moving",
         "Speed",
@@ -50,15 +58,19 @@ public static class GameComponentsLookup {
         typeof(Assets.Code.GamePlay.Features.Hero.Hero),
         typeof(Assets.Code.GamePlay.Features.Hero.HeroAnimatorComponent),
         typeof(Assets.Code.GamePlay.Features.Hero.SpriteRendererComponent),
-        typeof(Code.GamePlay.Common.Destructed),
+        typeof(Code.Common.Destructed),
+        typeof(Code.Common.SelfDestructTimer),
+        typeof(Code.Common.View),
+        typeof(Code.Common.ViewPath),
+        typeof(Code.Common.ViewPrefab),
         typeof(Code.GamePlay.Common.Id),
         typeof(Code.GamePlay.Common.Radius),
-        typeof(Code.GamePlay.Common.SelfDestructTimer),
         typeof(Code.GamePlay.Common.TransformComponent),
-        typeof(Code.GamePlay.Common.View),
-        typeof(Code.GamePlay.Common.ViewPath),
-        typeof(Code.GamePlay.Common.ViewPrefab),
         typeof(Code.GamePlay.Common.WorldPosition),
+        typeof(Code.Gameplay.Features.Enemies.Enemy),
+        typeof(Code.Gameplay.Features.Enemies.EnemyAnimatorComponent),
+        typeof(Code.Gameplay.Features.Enemies.EnemyTypeIdComponent),
+        typeof(Code.Gameplay.Features.Enemies.SpawnTimer),
         typeof(Code.GamePlay.Features.Movement.Direction),
         typeof(Code.GamePlay.Features.Movement.Moving),
         typeof(Code.GamePlay.Features.Movement.Speed),
