@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Assets.Code.GamePlay.Features.Hero.SpriteRendererComponent spriteRenderer { get { return (Assets.Code.GamePlay.Features.Hero.SpriteRendererComponent)GetComponent(GameComponentsLookup.SpriteRenderer); } }
+    public Code.GamePlay.Common.SpriteRendererComponent spriteRenderer { get { return (Code.GamePlay.Common.SpriteRendererComponent)GetComponent(GameComponentsLookup.SpriteRenderer); } }
     public bool hasSpriteRenderer { get { return HasComponent(GameComponentsLookup.SpriteRenderer); } }
 
     public void AddSpriteRenderer(UnityEngine.SpriteRenderer newValue) {
         var index = GameComponentsLookup.SpriteRenderer;
-        var component = (Assets.Code.GamePlay.Features.Hero.SpriteRendererComponent)CreateComponent(index, typeof(Assets.Code.GamePlay.Features.Hero.SpriteRendererComponent));
+        var component = (Code.GamePlay.Common.SpriteRendererComponent)CreateComponent(index, typeof(Code.GamePlay.Common.SpriteRendererComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceSpriteRenderer(UnityEngine.SpriteRenderer newValue) {
         var index = GameComponentsLookup.SpriteRenderer;
-        var component = (Assets.Code.GamePlay.Features.Hero.SpriteRendererComponent)CreateComponent(index, typeof(Assets.Code.GamePlay.Features.Hero.SpriteRendererComponent));
+        var component = (Code.GamePlay.Common.SpriteRendererComponent)CreateComponent(index, typeof(Code.GamePlay.Common.SpriteRendererComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

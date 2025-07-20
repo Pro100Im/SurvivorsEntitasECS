@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.GamePlay.Common.Radius radius { get { return (Code.GamePlay.Common.Radius)GetComponent(GameComponentsLookup.Radius); } }
+    public Code.Gameplay.Features.TargetCollection.Radius radius { get { return (Code.Gameplay.Features.TargetCollection.Radius)GetComponent(GameComponentsLookup.Radius); } }
     public bool hasRadius { get { return HasComponent(GameComponentsLookup.Radius); } }
 
     public void AddRadius(float newValue) {
         var index = GameComponentsLookup.Radius;
-        var component = (Code.GamePlay.Common.Radius)CreateComponent(index, typeof(Code.GamePlay.Common.Radius));
+        var component = (Code.Gameplay.Features.TargetCollection.Radius)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.Radius));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceRadius(float newValue) {
         var index = GameComponentsLookup.Radius;
-        var component = (Code.GamePlay.Common.Radius)CreateComponent(index, typeof(Code.GamePlay.Common.Radius));
+        var component = (Code.Gameplay.Features.TargetCollection.Radius)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.Radius));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

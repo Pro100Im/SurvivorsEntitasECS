@@ -1,169 +1,101 @@
-Shader "Custom/ColorizeWithOverlayAndSoftOutline"
+Shader "Universal Render Pipeline/2D/Custom/ColorizeOverlayOutline"
 {
     Properties
     {
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Color ("Color", Color) = (1,1,1,1)
+        _MainTex ("Texture", 2D) = "white" {}
+        _Color ("Color Tint", Color) = (1,1,1,1)
         _Intensity ("Color Intensity", Range(0,1)) = 0.5
         _OverlayColor ("Overlay Color", Color) = (1,1,1,1)
         _OverlayIntensity ("Overlay Intensity", Range(0,1)) = 0.0
         _OutlineColor ("Outline Color", Color) = (0,0,0,1)
-        _OutlineSize ("Outline Size", Range(0,25)) = 1.0 // Adjusted the range to 1-10
-        _OutlineSmoothness ("Outline Smootheness", Range(1, 10)) = 2.0 // Exposed parameter for outline smootheness
-        _FlipX ("Flip X", Float) = 0 // 0 for no flip, 1 for flip on X-axis
+        _OutlineSize ("Outline Thickness", Range(0,10)) = 1.0
+        _OutlineSmoothness ("Outline Smoothness", Range(1,10)) = 2.0
     }
+
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" "CanUseSpriteAtlas"="True" }
-        LOD 100
-
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
         Blend SrcAlpha OneMinusSrcAlpha
         Cull Off
         ZWrite Off
 
         Pass
         {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment fragOutline
-            #include "UnityCG.cginc"
+            Name "Universal2D"
+            Tags { "LightMode"="Universal2D" }
 
-            struct appdata
-            {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
-            };
-
-            struct v2f
-            {
-                float2 uv : TEXCOORD0;
-                float4 vertex : SV_POSITION;
-            };
-
-            sampler2D _MainTex;
-            half4 _MainTex_TexelSize;
-            float4 _MainTex_ST;
-            float4 _OutlineColor;
-            float _OutlineSize;
-            float _OutlineSmoothness; // Exposed parameter for outline smoothness
-            float _FlipX;
-
-            v2f vert (appdata v)
-            {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-
-                if (_FlipX > 0.5) {
-                    o.uv.x = 1.0 - o.uv.x;
-                }
-
-                if (_MainTex_ST.z < 0) {
-                    o.uv.x = 1.0 - o.uv.x;
-                }
-
-                o.uv = TRANSFORM_TEX(o.uv, _MainTex);
-                return o;
-            }
-
-            fixed4 fragOutline(v2f i) : SV_Target
-            {
-                fixed4 outlineColor = _OutlineColor;
-                float2 texSize = float2(1.0 / _MainTex_TexelSize.x, 1.0 / _MainTex_TexelSize.y) * _OutlineSize * 0.00001; // Scale texSize by _OutlineSize
-
-                // Sample the texture multiple times around the current pixel
-                float alpha = 0.0;
-                for (int y = -1; y <= 1; y++)
-                {
-                    for (int x = -1; x <= 1; x++)
-                    {
-                        if (x == 0 && y == 0) continue; // Skip the center pixel
-                        alpha += tex2D(_MainTex, i.uv + float2(x, y) * texSize).a;
-                    }
-                }
-
-                // Calculate the average alpha value of the surrounding pixels
-                alpha /= 8.0; // 8 samples were taken
-
-                // Calculate the center alpha value
-                float centerAlpha = tex2D(_MainTex, i.uv).a;
-
-                // Apply a smooth falloff effect to the outline using _OutlineSmoothness
-                float outlineAlpha = lerp(centerAlpha, alpha, _OutlineSmoothness);
-
-                // Only draw outline if center alpha is less than the outline alpha
-                if (centerAlpha < outlineAlpha)
-                {
-                    return outlineColor * outlineAlpha;
-                }
-                else
-                {
-                    return tex2D(_MainTex, i.uv);
-                }
-            }
-            ENDCG
-        }
-
-        Pass
-        {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #include "UnityCG.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            struct appdata
+            struct Attributes
             {
-                float4 vertex : POSITION;
+                float4 positionOS : POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            struct v2f
+            struct Varyings
             {
+                float4 positionHCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
-                float4 vertex : SV_POSITION;
             };
 
             sampler2D _MainTex;
-            float4 _MainTex_ST;
+            float4 _MainTex_TexelSize;
+
             float4 _Color;
             float _Intensity;
             float4 _OverlayColor;
             float _OverlayIntensity;
-            float _FlipX;
+            float4 _OutlineColor;
+            float _OutlineSize;
+            float _OutlineSmoothness;
 
-            v2f vert (appdata v)
+            Varyings vert (Attributes IN)
             {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-
-                if (_FlipX > 0.5) {
-                    o.uv.x = 1.0 - o.uv.x;
-                }
-
-                if (_MainTex_ST.z < 0) {
-                    o.uv.x = 1.0 - o.uv.x;
-                }
-
-                o.uv = TRANSFORM_TEX(o.uv, _MainTex);
-                return o;
+                Varyings OUT;
+                OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
+                OUT.uv = IN.uv;
+                return OUT;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            float SampleAlphaOutline(float2 uv)
             {
-                // Sample the texture
-                fixed4 tex = tex2D(_MainTex, i.uv);
+                float alpha = 0.0;
+                float2 offset = _OutlineSize * _MainTex_TexelSize.xy;
 
-                // Apply the base colorization
-                fixed4 colorized = lerp(tex, _Color, _Intensity * tex.a);
-
-                // Apply the overlay color considering sprite's alpha
-                fixed4 overlay = lerp(colorized, _OverlayColor, _OverlayIntensity * tex.a);
-
-                return overlay;
+                for (int y = -1; y <= 1; ++y)
+                {
+                    for (int x = -1; x <= 1; ++x)
+                    {
+                        if (x == 0 && y == 0) continue;
+                        alpha += tex2D(_MainTex, uv + float2(x, y) * offset).a;
+                    }
+                }
+                return alpha / 8.0;
             }
-            ENDCG
+
+            half4 frag(Varyings IN) : SV_Target
+            {
+                half4 baseColor = tex2D(_MainTex, IN.uv);
+                float centerAlpha = baseColor.a;
+                float outlineAlpha = SampleAlphaOutline(IN.uv);
+
+                // Smooth outline blend
+                float smoothed = lerp(centerAlpha, outlineAlpha, _OutlineSmoothness);
+
+                if (centerAlpha < smoothed)
+                {
+                    return _OutlineColor * smoothed;
+                }
+
+                // Tint base
+                half4 tinted = lerp(baseColor, _Color, _Intensity * centerAlpha);
+                half4 final = lerp(tinted, _OverlayColor, _OverlayIntensity * centerAlpha);
+                return final;
+            }
+            ENDHLSL
         }
-    } 
-    Fallback "Sprites/Default"
+    }
 }

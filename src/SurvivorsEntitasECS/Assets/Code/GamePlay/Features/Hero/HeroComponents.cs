@@ -6,5 +6,4 @@ namespace Assets.Code.GamePlay.Features.Hero
 {
     [Game] public class Hero : IComponent { }
     [Game] public class HeroAnimatorComponent : IComponent { public HeroAnimator Value; }
-    [Game] public class SpriteRendererComponent : IComponent { public SpriteRenderer Value; }
 }

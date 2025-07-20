@@ -27,7 +27,9 @@ namespace Code.Gameplay.Features.Hero.Behaviours
     {
       if (DOTween.IsTweening(Material))
         return;
-      
+
+       Debug.LogWarning("PlayDamageTaken()");
+
       Material.DOFloat(0.5f, OverlayIntensityProperty, 0.15f)
         .OnComplete(() =>
         {

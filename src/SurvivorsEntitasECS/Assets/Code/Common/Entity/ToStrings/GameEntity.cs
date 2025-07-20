@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using Assets.Code.GamePlay.Features.Hero;
 using Code.Common.Entity.ToStrings;
-//using Code.Common.Extensions;
-//using Code.Gameplay.Features.Enemies;
+using Code.Common.Extensions;
+using Code.Gameplay.Features.Enemies;
 using Code.Gameplay.Features.Hero;
 using Entitas;
 using UnityEngine;
@@ -30,17 +31,17 @@ public sealed partial class GameEntity : INamedEntity
             if(components.Length == 1)
                 return components[0].GetType().Name;
 
-            //foreach(IComponent component in components)
-            //{
-            //    switch(component.GetType().Name)
-            //    {
-            //        case nameof(Hero):
-            //            return PrintHero();
+            foreach(IComponent component in components)
+            {
+                switch(component.GetType().Name)
+                {
+                    case nameof(Hero):
+                        return PrintHero();
 
-            //        case nameof(Enemy):
-            //            return PrintEnemy();
-            //    }
-            //}
+                    case nameof(Enemy):
+                        return PrintEnemy();
+                }
+            }
         }
         catch(Exception exception)
         {
@@ -50,17 +51,17 @@ public sealed partial class GameEntity : INamedEntity
         return components.First().GetType().Name;
     }
 
-    //private string PrintHero()
-    //{
-    //    return new StringBuilder($"Hero ")
-    //      .With(s => s.Append($"Id:{Id}"), when: hasId)
-    //      .ToString();
-    //}
+    private string PrintHero()
+    {
+        return new StringBuilder($"Hero ")
+          .With(s => s.Append($"Id:{id.Value}"), when: hasId)
+          .ToString();
+    }
 
-    //private string PrintEnemy() =>
-    //  new StringBuilder($"Enemy ")
-    //    .With(s => s.Append($"Id:{Id}"), when: hasId)
-    //    .ToString();
+    private string PrintEnemy() =>
+      new StringBuilder($"Enemy ")
+        .With(s => s.Append($"Id:{id.Value}"), when: hasId)
+        .ToString();
 
     public string BaseToString() => base.ToString();
 }
