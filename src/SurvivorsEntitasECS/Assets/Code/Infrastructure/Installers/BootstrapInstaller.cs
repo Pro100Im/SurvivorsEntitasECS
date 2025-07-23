@@ -9,25 +9,25 @@ using Code.Gameplay.Common.Time;
 //using Code.Gameplay.Features.Armaments.Factory;
 //using Code.Gameplay.Features.Effects.Factory;
 //using Code.Gameplay.Features.Enchants.UIFactory;
-//using Code.Gameplay.Features.Enemies.Factory;
-//using Code.Gameplay.Features.Hero.Factory;
+using Code.Gameplay.Features.Enemies.Factory;
+using Code.Gameplay.Features.Hero.Factory;
 //using Code.Gameplay.Features.Statuses.Applier;
 //using Code.Gameplay.Features.Statuses.Factory;
 //using Code.Gameplay.Features.LevelUp.Services;
 //using Code.Gameplay.Features.LevelUp.Windows;
 //using Code.Gameplay.Features.Loot.Factory;
 using Code.Gameplay.Input.Service;
-//using Code.Gameplay.Levels;
+using Code.Gameplay.Levels;
 //using Code.Gameplay.StaticData;
 //using Code.Gameplay.Windows;
-//using Code.Infrastructure.AssetManagement;
+using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Identifiers;
 //using Code.Infrastructure.Loading;
 //using Code.Infrastructure.States.Factory;
 //using Code.Infrastructure.States.GameStates;
 //using Code.Infrastructure.States.StateMachine;
 using Code.Infrastructure.Systems;
-//using Code.Infrastructure.View.Factory;
+using Code.Infrastructure.View.Factory;
 //using Code.Meta.UI.GoldHolder.Service;
 //using Code.Meta.UI.Shop;
 //using Code.Meta.UI.Shop.Service;
@@ -109,7 +109,7 @@ namespace Code.Infrastructure.Installers
         private void BindGameplayServices()
         {
             //Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
-            //Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
+            Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
             //Container.Bind<IStatusApplier>().To<StatusApplier>().AsSingle();
             //Container.Bind<ILevelUpService>().To<LevelUpService>().AsSingle();
             //Container.Bind<IAbilityUpgradeService>().To<AbilityUpgradeService>().AsSingle();
@@ -117,9 +117,9 @@ namespace Code.Infrastructure.Installers
 
         private void BindGameplayFactories()
         {
-            //Container.Bind<IEntityViewFactory>().To<EntityViewFactory>().AsSingle();
-            //Container.Bind<IHeroFactory>().To<HeroFactory>().AsSingle();
-            //Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
+            Container.Bind<IEntityViewFactory>().To<EntityViewFactory>().AsSingle();
+            Container.Bind<IHeroFactory>().To<HeroFactory>().AsSingle();
+            Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
             //Container.Bind<IArmamentFactory>().To<ArmamentFactory>().AsSingle();
             //Container.Bind<IAbilityFactory>().To<AbilityFactory>().AsSingle();
             //Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
@@ -146,7 +146,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindAssetManagementServices()
         {
-            //Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
+            Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
         }
 
         private void BindCommonServices()

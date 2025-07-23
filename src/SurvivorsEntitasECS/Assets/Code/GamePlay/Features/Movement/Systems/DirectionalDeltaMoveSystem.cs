@@ -15,7 +15,13 @@ namespace Code.GamePlay.Features.Movement.Systems
 
             _movers = gameContext
                 .GetGroup(GameMatcher
-                .AllOf(GameMatcher.WorldPosition, GameMatcher.Speed, GameMatcher.Direction, GameMatcher.Moving));
+                .AllOf(
+                    GameMatcher.WorldPosition, 
+                    GameMatcher.Speed, 
+                    GameMatcher.Direction, 
+                    GameMatcher.Moving,
+                    GameMatcher.MovementAvailable
+                    ));
         }
 
         public void Execute()

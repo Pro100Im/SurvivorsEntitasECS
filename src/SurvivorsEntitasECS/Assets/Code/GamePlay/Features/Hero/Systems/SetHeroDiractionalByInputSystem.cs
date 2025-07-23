@@ -1,5 +1,4 @@
 using Entitas;
-using UnityEngine;
 
 namespace Code.GamePlay.Features.Hero.Systems
 {
@@ -10,7 +9,11 @@ namespace Code.GamePlay.Features.Hero.Systems
 
         public SetHeroDiractionalByInputSystem(GameContext gameContext, InputContext inputContext)
         {
-            _heroes = gameContext.GetGroup(GameMatcher.Hero);
+            _heroes = gameContext.GetGroup(GameMatcher
+                .AllOf(
+                GameMatcher.Hero,
+                GameMatcher.MovementAvailable));
+
             _inputs = inputContext.GetGroup(InputMatcher.Input);
         }
 

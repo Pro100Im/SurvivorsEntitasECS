@@ -30,21 +30,22 @@ public static class GameComponentsLookup {
     public const int MaxHp = 19;
     public const int ProcessingDeath = 20;
     public const int Direction = 21;
-    public const int Moving = 22;
-    public const int Speed = 23;
-    public const int TurnedAlongDirection = 24;
-    public const int CollectingTargetsContinuously = 25;
-    public const int CollectTargetsInterval = 26;
-    public const int CollectTargetsTimer = 27;
-    public const int LayerMask = 28;
-    public const int ProcessedTargets = 29;
-    public const int Radius = 30;
-    public const int Reached = 31;
-    public const int ReadyToCollectTargets = 32;
-    public const int TargetBuffer = 33;
-    public const int TargetLimit = 34;
+    public const int MovementAvailable = 22;
+    public const int Moving = 23;
+    public const int Speed = 24;
+    public const int TurnedAlongDirection = 25;
+    public const int CollectingTargetsContinuously = 26;
+    public const int CollectTargetsInterval = 27;
+    public const int CollectTargetsTimer = 28;
+    public const int LayerMask = 29;
+    public const int ProcessedTargets = 30;
+    public const int Radius = 31;
+    public const int Reached = 32;
+    public const int ReadyToCollectTargets = 33;
+    public const int TargetBuffer = 34;
+    public const int TargetLimit = 35;
 
-    public const int TotalComponents = 35;
+    public const int TotalComponents = 36;
 
     public static readonly string[] componentNames = {
         "Hero",
@@ -69,6 +70,7 @@ public static class GameComponentsLookup {
         "MaxHp",
         "ProcessingDeath",
         "Direction",
+        "MovementAvailable",
         "Moving",
         "Speed",
         "TurnedAlongDirection",
@@ -107,6 +109,7 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Features.Lifetime.MaxHp),
         typeof(Code.Gameplay.Features.Lifetime.ProcessingDeath),
         typeof(Code.GamePlay.Features.Movement.Direction),
+        typeof(Code.GamePlay.Features.Movement.MovementAvailable),
         typeof(Code.GamePlay.Features.Movement.Moving),
         typeof(Code.GamePlay.Features.Movement.Speed),
         typeof(Code.GamePlay.Features.Movement.TurnedAlongDirection),
