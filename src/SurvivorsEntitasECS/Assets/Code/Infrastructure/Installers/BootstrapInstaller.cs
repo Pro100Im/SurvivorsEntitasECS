@@ -4,9 +4,9 @@ using Code.Gameplay.Common.Collisions;
 using Code.Gameplay.Common.Physics;
 //using Code.Gameplay.Common.Random;
 using Code.Gameplay.Common.Time;
-//using Code.Gameplay.Features.Abilities.Factory;
+using Code.Gameplay.Features.Abilities.Factory;
 //using Code.Gameplay.Features.Abilities.Upgrade;
-//using Code.Gameplay.Features.Armaments.Factory;
+using Code.Gameplay.Features.Armaments.Factory;
 //using Code.Gameplay.Features.Effects.Factory;
 //using Code.Gameplay.Features.Enchants.UIFactory;
 using Code.Gameplay.Features.Enemies.Factory;
@@ -18,7 +18,7 @@ using Code.Gameplay.Features.Hero.Factory;
 //using Code.Gameplay.Features.Loot.Factory;
 using Code.Gameplay.Input.Service;
 using Code.Gameplay.Levels;
-//using Code.Gameplay.StaticData;
+using Code.Gameplay.StaticData;
 //using Code.Gameplay.Windows;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Identifiers;
@@ -108,7 +108,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindGameplayServices()
         {
-            //Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
+            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
             //Container.Bind<IStatusApplier>().To<StatusApplier>().AsSingle();
             //Container.Bind<ILevelUpService>().To<LevelUpService>().AsSingle();
@@ -120,8 +120,8 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IEntityViewFactory>().To<EntityViewFactory>().AsSingle();
             Container.Bind<IHeroFactory>().To<HeroFactory>().AsSingle();
             Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
-            //Container.Bind<IArmamentFactory>().To<ArmamentFactory>().AsSingle();
-            //Container.Bind<IAbilityFactory>().To<AbilityFactory>().AsSingle();
+            Container.Bind<IArmamentFactory>().To<ArmamentFactory>().AsSingle();
+            Container.Bind<IAbilityFactory>().To<AbilityFactory>().AsSingle();
             //Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
             //Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
             //Container.Bind<ILootFactory>().To<LootFactory>().AsSingle();
