@@ -1,3 +1,4 @@
+using Code.Gameplay.Features.Movement.Systems;
 using Code.GamePlay.Features.Movement.Systems;
 using Code.Infrastructure.Systems;
 
@@ -10,6 +11,7 @@ namespace Code.GamePlay.Features.Movement
             Add(systemFactory.Create<DirectionalDeltaMoveSystem>());
             Add(systemFactory.Create<UpdateTransformPositionSystem>());
             Add(systemFactory.Create<TurnAlongDirectionSystem>());
+            Add(systemFactory.Create<RotateAlongDirectionSystem>());
         }
     }
 }

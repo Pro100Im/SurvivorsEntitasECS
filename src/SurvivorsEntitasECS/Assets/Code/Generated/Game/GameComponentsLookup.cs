@@ -28,34 +28,38 @@ public static class GameComponentsLookup {
     public const int RecreatedOnUpgrade = 17;
     public const int UpgradeRequest = 18;
     public const int VegetableBoltAbility = 19;
-    public const int Cooldown = 20;
-    public const int CooldownLeft = 21;
-    public const int CooldownUp = 22;
-    public const int Enemy = 23;
-    public const int EnemyAnimator = 24;
-    public const int EnemyTypeId = 25;
-    public const int SpawnTimer = 26;
-    public const int CurrentHp = 27;
-    public const int Dead = 28;
-    public const int MaxHp = 29;
-    public const int ProcessingDeath = 30;
-    public const int Direction = 31;
-    public const int MovementAvailable = 32;
-    public const int Moving = 33;
-    public const int Speed = 34;
-    public const int TurnedAlongDirection = 35;
-    public const int CollectingTargetsContinuously = 36;
-    public const int CollectTargetsInterval = 37;
-    public const int CollectTargetsTimer = 38;
-    public const int LayerMask = 39;
-    public const int ProcessedTargets = 40;
-    public const int Radius = 41;
-    public const int Reached = 42;
-    public const int ReadyToCollectTargets = 43;
-    public const int TargetBuffer = 44;
-    public const int TargetLimit = 45;
+    public const int Armament = 20;
+    public const int FollowingProducer = 21;
+    public const int Processed = 22;
+    public const int Cooldown = 23;
+    public const int CooldownLeft = 24;
+    public const int CooldownUp = 25;
+    public const int Enemy = 26;
+    public const int EnemyAnimator = 27;
+    public const int EnemyTypeId = 28;
+    public const int SpawnTimer = 29;
+    public const int CurrentHp = 30;
+    public const int Dead = 31;
+    public const int MaxHp = 32;
+    public const int ProcessingDeath = 33;
+    public const int Direction = 34;
+    public const int MovementAvailable = 35;
+    public const int Moving = 36;
+    public const int RotationAlignedAlongDirection = 37;
+    public const int Speed = 38;
+    public const int TurnedAlongDirection = 39;
+    public const int CollectingTargetsContinuously = 40;
+    public const int CollectTargetsInterval = 41;
+    public const int CollectTargetsTimer = 42;
+    public const int LayerMask = 43;
+    public const int ProcessedTargets = 44;
+    public const int Radius = 45;
+    public const int Reached = 46;
+    public const int ReadyToCollectTargets = 47;
+    public const int TargetBuffer = 48;
+    public const int TargetLimit = 49;
 
-    public const int TotalComponents = 46;
+    public const int TotalComponents = 50;
 
     public static readonly string[] componentNames = {
         "Hero",
@@ -78,6 +82,9 @@ public static class GameComponentsLookup {
         "RecreatedOnUpgrade",
         "UpgradeRequest",
         "VegetableBoltAbility",
+        "Armament",
+        "FollowingProducer",
+        "Processed",
         "Cooldown",
         "CooldownLeft",
         "CooldownUp",
@@ -92,6 +99,7 @@ public static class GameComponentsLookup {
         "Direction",
         "MovementAvailable",
         "Moving",
+        "RotationAlignedAlongDirection",
         "Speed",
         "TurnedAlongDirection",
         "CollectingTargetsContinuously",
@@ -127,6 +135,9 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Features.Abilities.RecreatedOnUpgrade),
         typeof(Code.Gameplay.Features.Abilities.UpgradeRequest),
         typeof(Code.Gameplay.Features.Abilities.VegetableBoltAbility),
+        typeof(Code.Gameplay.Features.Armaments.Armament),
+        typeof(Code.Gameplay.Features.Armaments.FollowingProducer),
+        typeof(Code.Gameplay.Features.Armaments.Processed),
         typeof(Code.Gameplay.Features.Cooldowns.Cooldown),
         typeof(Code.Gameplay.Features.Cooldowns.CooldownLeft),
         typeof(Code.Gameplay.Features.Cooldowns.CooldownUp),
@@ -141,6 +152,7 @@ public static class GameComponentsLookup {
         typeof(Code.GamePlay.Features.Movement.Direction),
         typeof(Code.GamePlay.Features.Movement.MovementAvailable),
         typeof(Code.GamePlay.Features.Movement.Moving),
+        typeof(Code.GamePlay.Features.Movement.RotationAlignedAlongDirection),
         typeof(Code.GamePlay.Features.Movement.Speed),
         typeof(Code.GamePlay.Features.Movement.TurnedAlongDirection),
         typeof(Code.Gameplay.Features.TargetCollection.CollectingTargetsContinuously),

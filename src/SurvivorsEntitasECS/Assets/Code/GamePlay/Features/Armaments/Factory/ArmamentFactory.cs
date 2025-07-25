@@ -44,10 +44,9 @@ namespace Code.Gameplay.Features.Armaments.Factory
 
             var entity = CreateProjectileEntity(at, abilityLevel, setup);
             //entity.AddParentAbility(AbilityId.VegetableBolt);
-            //entity.With(x => x.isRotationAlignedAlongDirection = true);
+            entity.With(x => x.isRotationAlignedAlongDirection = true);
 
             return entity;
-
         }
 
         public GameEntity CreateMushroom(int level, Vector3 at, float phase)
@@ -90,7 +89,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
         {
             var entity = CreateEntity.Empty();
             entity.AddId(_identifiers.Next());
-            //entity.With(x => x.isArmament = true);
+            entity.With(x => x.isArmament = true);
             entity.AddViewPrefab(abilityLevel.ViewPrefab);
             entity.AddWorldPosition(at);
             entity.AddSpeed(setup.Speed);
