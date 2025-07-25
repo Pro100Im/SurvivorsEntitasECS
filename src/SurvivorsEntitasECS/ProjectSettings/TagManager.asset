@@ -41,8 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy
+    uniqueID: 1068350177
+    locked: 0
   - name: Player
     uniqueID: 709918159
+    locked: 0
+  - name: Armaments
+    uniqueID: 1599945423
+    locked: 0
+  - name: Effects
+    uniqueID: 2897302351
     locked: 0
   m_RenderingLayers:
   - Default

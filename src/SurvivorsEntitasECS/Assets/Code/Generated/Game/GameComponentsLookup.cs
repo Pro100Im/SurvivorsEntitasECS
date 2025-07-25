@@ -34,32 +34,38 @@ public static class GameComponentsLookup {
     public const int Cooldown = 23;
     public const int CooldownLeft = 24;
     public const int CooldownUp = 25;
-    public const int Enemy = 26;
-    public const int EnemyAnimator = 27;
-    public const int EnemyTypeId = 28;
-    public const int SpawnTimer = 29;
-    public const int CurrentHp = 30;
-    public const int Dead = 31;
-    public const int MaxHp = 32;
-    public const int ProcessingDeath = 33;
-    public const int Direction = 34;
-    public const int MovementAvailable = 35;
-    public const int Moving = 36;
-    public const int RotationAlignedAlongDirection = 37;
-    public const int Speed = 38;
-    public const int TurnedAlongDirection = 39;
-    public const int CollectingTargetsContinuously = 40;
-    public const int CollectTargetsInterval = 41;
-    public const int CollectTargetsTimer = 42;
-    public const int LayerMask = 43;
-    public const int ProcessedTargets = 44;
-    public const int Radius = 45;
-    public const int Reached = 46;
-    public const int ReadyToCollectTargets = 47;
-    public const int TargetBuffer = 48;
-    public const int TargetLimit = 49;
+    public const int DamageEffect = 26;
+    public const int Effect = 27;
+    public const int EffectValue = 28;
+    public const int HealEffect = 29;
+    public const int ProducerId = 30;
+    public const int TargetId = 31;
+    public const int Enemy = 32;
+    public const int EnemyAnimator = 33;
+    public const int EnemyTypeId = 34;
+    public const int SpawnTimer = 35;
+    public const int CurrentHp = 36;
+    public const int Dead = 37;
+    public const int MaxHp = 38;
+    public const int ProcessingDeath = 39;
+    public const int Direction = 40;
+    public const int MovementAvailable = 41;
+    public const int Moving = 42;
+    public const int RotationAlignedAlongDirection = 43;
+    public const int Speed = 44;
+    public const int TurnedAlongDirection = 45;
+    public const int CollectingTargetsContinuously = 46;
+    public const int CollectTargetsInterval = 47;
+    public const int CollectTargetsTimer = 48;
+    public const int LayerMask = 49;
+    public const int ProcessedTargets = 50;
+    public const int Radius = 51;
+    public const int Reached = 52;
+    public const int ReadyToCollectTargets = 53;
+    public const int TargetBuffer = 54;
+    public const int TargetLimit = 55;
 
-    public const int TotalComponents = 50;
+    public const int TotalComponents = 56;
 
     public static readonly string[] componentNames = {
         "Hero",
@@ -88,6 +94,12 @@ public static class GameComponentsLookup {
         "Cooldown",
         "CooldownLeft",
         "CooldownUp",
+        "DamageEffect",
+        "Effect",
+        "EffectValue",
+        "HealEffect",
+        "ProducerId",
+        "TargetId",
         "Enemy",
         "EnemyAnimator",
         "EnemyTypeId",
@@ -141,6 +153,12 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Features.Cooldowns.Cooldown),
         typeof(Code.Gameplay.Features.Cooldowns.CooldownLeft),
         typeof(Code.Gameplay.Features.Cooldowns.CooldownUp),
+        typeof(Code.Gameplay.Features.Effects.DamageEffect),
+        typeof(Code.Gameplay.Features.Effects.Effect),
+        typeof(Code.Gameplay.Features.Effects.EffectValue),
+        typeof(Code.Gameplay.Features.Effects.HealEffect),
+        typeof(Code.Gameplay.Features.Effects.ProducerId),
+        typeof(Code.Gameplay.Features.Effects.TargetId),
         typeof(Code.Gameplay.Features.Enemies.Enemy),
         typeof(Code.Gameplay.Features.Enemies.EnemyAnimatorComponent),
         typeof(Code.Gameplay.Features.Enemies.EnemyTypeIdComponent),
