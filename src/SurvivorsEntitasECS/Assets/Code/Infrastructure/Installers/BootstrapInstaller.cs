@@ -7,7 +7,7 @@ using Code.Gameplay.Common.Time;
 using Code.Gameplay.Features.Abilities.Factory;
 //using Code.Gameplay.Features.Abilities.Upgrade;
 using Code.Gameplay.Features.Armaments.Factory;
-//using Code.Gameplay.Features.Effects.Factory;
+using Code.Gameplay.Features.Effects.Factory;
 //using Code.Gameplay.Features.Enchants.UIFactory;
 using Code.Gameplay.Features.Enemies.Factory;
 using Code.Gameplay.Features.Hero.Factory;
@@ -122,7 +122,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
             Container.Bind<IArmamentFactory>().To<ArmamentFactory>().AsSingle();
             Container.Bind<IAbilityFactory>().To<AbilityFactory>().AsSingle();
-            //Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
+            Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
             //Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
             //Container.Bind<ILootFactory>().To<LootFactory>().AsSingle();
             //Container.Bind<IShopItemFactory>().To<ShopItemFactory>().AsSingle();

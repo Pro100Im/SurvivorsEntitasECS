@@ -59,7 +59,7 @@ namespace Code.Gameplay.Features.Abilities.Systems
 
                     var entity = _armamentFactory.CreateVegetableBolt(1, hero.worldPosition.Value);
 
-                    //entity .AddProducerId(hero.id.Value);
+                    entity.AddProducerId(hero.id.Value);
                     entity.ReplaceDirection((FirstAvailableTarget().worldPosition.Value - hero.worldPosition.Value).normalized);
                     entity.With(x => x.isMoving = true);
 

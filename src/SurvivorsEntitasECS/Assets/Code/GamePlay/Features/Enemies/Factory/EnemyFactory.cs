@@ -1,7 +1,7 @@
 using Code.Common.Entity;
 using Code.Common.Extensions;
 //using Code.Gameplay.Features.CharacterStats;
-//using Code.Gameplay.Features.Effects;
+using Code.Gameplay.Features.Effects;
 using Code.Infrastructure.Identifiers;
 using System;
 using System.Collections.Generic;
@@ -45,12 +45,11 @@ namespace Code.Gameplay.Features.Enemies.Factory
             //entity.AddStatModifiers(InitStats.EmptyStatDictionary());
             //entity.AddSpeed(baseStats[Stats.Speed]);
             //entity.AddCurrentHp(baseStats[Stats.MaxHp]);
-            //entity.AddMaxHp(baseStats[Stats.MaxHp]);
-            entity.AddDamage(1);
+            //entity.AddMaxHp(baseStats[Stats.MaxHp]);;
             entity.AddSpeed(1);
             entity.AddCurrentHp(3);
             entity.AddMaxHp(3);
-            //entity.AddEffectSetups(new List<EffectSetup> { new EffectSetup() { EffectTypeId = EffectTypeId.Damage, Value = baseStats[Stats.Damage] } })
+            entity.AddEffectSetups(new List<EffectSetup> { new EffectSetup() { EffectTypeId = EffectTypeId.Damage, Value = 1/*baseStats[Stats.Damage]*/ } });
             entity.AddRadius(0.3f);
             entity.AddTargetBuffer(new List<int>(1));
             entity.AddCollectTargetsInterval(0.5f);

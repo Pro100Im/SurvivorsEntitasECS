@@ -18,6 +18,9 @@ MonoBehaviour:
     Description: Adds a dangerous projectile
     Cooldown: 1
     ViewPrefab: {fileID: 7955850205695098540, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 1
     ProjectileSetup:
       ProjectileCount: 1
       Speed: 2
@@ -32,6 +35,9 @@ MonoBehaviour:
     Description: Reduced cooldown
     Cooldown: 0.7
     ViewPrefab: {fileID: 7955850205695098540, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 2
     ProjectileSetup:
       ProjectileCount: 1
       Speed: 2
@@ -46,6 +52,9 @@ MonoBehaviour:
     Description: Reduced cooldown
     Cooldown: 0.6
     ViewPrefab: {fileID: 7955850205695098540, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 3
     ProjectileSetup:
       ProjectileCount: 1
       Speed: 2
@@ -60,6 +69,9 @@ MonoBehaviour:
     Description: Increased speed
     Cooldown: 0.6
     ViewPrefab: {fileID: 7955850205695098540, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 4
     ProjectileSetup:
       ProjectileCount: 1
       Speed: 4

@@ -29,43 +29,44 @@ public static class GameComponentsLookup {
     public const int UpgradeRequest = 18;
     public const int VegetableBoltAbility = 19;
     public const int Armament = 20;
-    public const int FollowingProducer = 21;
-    public const int Processed = 22;
-    public const int Cooldown = 23;
-    public const int CooldownLeft = 24;
-    public const int CooldownUp = 25;
-    public const int DamageEffect = 26;
-    public const int Effect = 27;
-    public const int EffectValue = 28;
-    public const int HealEffect = 29;
-    public const int ProducerId = 30;
-    public const int TargetId = 31;
-    public const int Enemy = 32;
-    public const int EnemyAnimator = 33;
-    public const int EnemyTypeId = 34;
-    public const int SpawnTimer = 35;
-    public const int CurrentHp = 36;
-    public const int Dead = 37;
-    public const int MaxHp = 38;
-    public const int ProcessingDeath = 39;
-    public const int Direction = 40;
-    public const int MovementAvailable = 41;
-    public const int Moving = 42;
-    public const int RotationAlignedAlongDirection = 43;
-    public const int Speed = 44;
-    public const int TurnedAlongDirection = 45;
-    public const int CollectingTargetsContinuously = 46;
-    public const int CollectTargetsInterval = 47;
-    public const int CollectTargetsTimer = 48;
-    public const int LayerMask = 49;
-    public const int ProcessedTargets = 50;
-    public const int Radius = 51;
-    public const int Reached = 52;
-    public const int ReadyToCollectTargets = 53;
-    public const int TargetBuffer = 54;
-    public const int TargetLimit = 55;
+    public const int EffectSetups = 21;
+    public const int FollowingProducer = 22;
+    public const int Processed = 23;
+    public const int Cooldown = 24;
+    public const int CooldownLeft = 25;
+    public const int CooldownUp = 26;
+    public const int DamageEffect = 27;
+    public const int Effect = 28;
+    public const int EffectValue = 29;
+    public const int HealEffect = 30;
+    public const int ProducerId = 31;
+    public const int TargetId = 32;
+    public const int Enemy = 33;
+    public const int EnemyAnimator = 34;
+    public const int EnemyTypeId = 35;
+    public const int SpawnTimer = 36;
+    public const int CurrentHp = 37;
+    public const int Dead = 38;
+    public const int MaxHp = 39;
+    public const int ProcessingDeath = 40;
+    public const int Direction = 41;
+    public const int MovementAvailable = 42;
+    public const int Moving = 43;
+    public const int RotationAlignedAlongDirection = 44;
+    public const int Speed = 45;
+    public const int TurnedAlongDirection = 46;
+    public const int CollectingTargetsContinuously = 47;
+    public const int CollectTargetsInterval = 48;
+    public const int CollectTargetsTimer = 49;
+    public const int LayerMask = 50;
+    public const int ProcessedTargets = 51;
+    public const int Radius = 52;
+    public const int Reached = 53;
+    public const int ReadyToCollectTargets = 54;
+    public const int TargetBuffer = 55;
+    public const int TargetLimit = 56;
 
-    public const int TotalComponents = 56;
+    public const int TotalComponents = 57;
 
     public static readonly string[] componentNames = {
         "Hero",
@@ -89,6 +90,7 @@ public static class GameComponentsLookup {
         "UpgradeRequest",
         "VegetableBoltAbility",
         "Armament",
+        "EffectSetups",
         "FollowingProducer",
         "Processed",
         "Cooldown",
@@ -148,6 +150,7 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Features.Abilities.UpgradeRequest),
         typeof(Code.Gameplay.Features.Abilities.VegetableBoltAbility),
         typeof(Code.Gameplay.Features.Armaments.Armament),
+        typeof(Code.Gameplay.Features.Armaments.EffectSetups),
         typeof(Code.Gameplay.Features.Armaments.FollowingProducer),
         typeof(Code.Gameplay.Features.Armaments.Processed),
         typeof(Code.Gameplay.Features.Cooldowns.Cooldown),

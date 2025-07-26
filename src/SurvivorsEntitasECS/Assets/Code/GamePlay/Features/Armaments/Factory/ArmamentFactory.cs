@@ -76,7 +76,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
             entity.AddCollectTargetsInterval(setup.Interval);
             entity.AddCollectTargetsTimer(0);
             entity.AddTargetBuffer(new List<int>(TargetBufferSize));
-            //entity.With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: !abilityLevel.EffectSetups.IsNullOrEmpty());
+            entity.With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: !abilityLevel.EffectSetups.IsNullOrEmpty());
             //entity.With(x => x.AddStatusSetups(abilityLevel.StatusSetups), when: !abilityLevel.StatusSetups.IsNullOrEmpty());
             //entity.AddProducerId(producerId);
             entity.AddWorldPosition(Vector3.zero);
@@ -93,7 +93,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
             entity.AddViewPrefab(abilityLevel.ViewPrefab);
             entity.AddWorldPosition(at);
             entity.AddSpeed(setup.Speed);
-            //entity.With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: !abilityLevel.EffectSetups.IsNullOrEmpty());
+            entity.With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: !abilityLevel.EffectSetups.IsNullOrEmpty());
             //entity.With(x => x.AddStatusSetups(abilityLevel.StatusSetups), when: !abilityLevel.StatusSetups.IsNullOrEmpty());
             entity.With(x => x.AddTargetLimit(setup.Pierce), when: setup.Pierce > 0);
             entity.AddRadius(setup.ContactRadius);
@@ -104,7 +104,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
             entity.With(x => x.isReadyToCollectTargets = true);
             entity.With(x => x.isCollectingTargetsContinuously = true);
             entity.AddSelfDestructTimer(setup.Lifetime);
-            entity.AddDamage(1);
+            //entity.AddDamage(1);
 
             return entity;
         }
