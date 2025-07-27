@@ -1,4 +1,4 @@
-//using Code.Common.EntityIndices;
+using Code.Common.EntityIndices;
 using Code.Gameplay.Cameras.Provider;
 using Code.Gameplay.Common.Collisions;
 using Code.Gameplay.Common.Physics;
@@ -11,7 +11,7 @@ using Code.Gameplay.Features.Effects.Factory;
 //using Code.Gameplay.Features.Enchants.UIFactory;
 using Code.Gameplay.Features.Enemies.Factory;
 using Code.Gameplay.Features.Hero.Factory;
-//using Code.Gameplay.Features.Statuses.Applier;
+using Code.Gameplay.Features.Statuses.Applier;
 //using Code.Gameplay.Features.Statuses.Factory;
 //using Code.Gameplay.Features.LevelUp.Services;
 //using Code.Gameplay.Features.LevelUp.Windows;
@@ -110,7 +110,7 @@ namespace Code.Infrastructure.Installers
         {
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
-            //Container.Bind<IStatusApplier>().To<StatusApplier>().AsSingle();
+            Container.Bind<IStatusApplier>().To<StatusApplier>().AsSingle();
             //Container.Bind<ILevelUpService>().To<LevelUpService>().AsSingle();
             //Container.Bind<IAbilityUpgradeService>().To<AbilityUpgradeService>().AsSingle();
         }
@@ -130,7 +130,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindEntityIndices()
         {
-            //Container.BindInterfacesAndSelfTo<GameEntityIndices>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameEntityIndices>().AsSingle();
         }
 
         private void BindSystemFactory()
