@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2694629944684605120}
   - component: {fileID: 8844608326566308033}
   - component: {fileID: 9005035456324568331}
+  - component: {fileID: 7197880508703517456}
   m_Layer: 0
   m_Name: enemyBase
   m_TagString: Untagged
@@ -75,6 +76,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityView: {fileID: 2694629944684605120}
   EnemyAnimator: {fileID: 3082643152100645119}
+--- !u!114 &7197880508703517456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439855031686531578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c6ef53f49845e6b657671fc9551c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntityView: {fileID: 2694629944684605120}
+  StatusVisuals: {fileID: 0}
 --- !u!1 &3126144766799759099
 GameObject:
   m_ObjectHideFlags: 0

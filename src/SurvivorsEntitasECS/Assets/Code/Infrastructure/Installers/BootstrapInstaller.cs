@@ -12,7 +12,7 @@ using Code.Gameplay.Features.Effects.Factory;
 using Code.Gameplay.Features.Enemies.Factory;
 using Code.Gameplay.Features.Hero.Factory;
 using Code.Gameplay.Features.Statuses.Applier;
-//using Code.Gameplay.Features.Statuses.Factory;
+using Code.Gameplay.Features.Statuses.Factory;
 //using Code.Gameplay.Features.LevelUp.Services;
 //using Code.Gameplay.Features.LevelUp.Windows;
 //using Code.Gameplay.Features.Loot.Factory;
@@ -123,7 +123,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IArmamentFactory>().To<ArmamentFactory>().AsSingle();
             Container.Bind<IAbilityFactory>().To<AbilityFactory>().AsSingle();
             Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
-            //Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
+            Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
             //Container.Bind<ILootFactory>().To<LootFactory>().AsSingle();
             //Container.Bind<IShopItemFactory>().To<ShopItemFactory>().AsSingle();
         }
