@@ -1,6 +1,6 @@
 using Code.Common.Entity;
 using Code.Common.Extensions;
-//using Code.Gameplay.Features.CharacterStats;
+using Code.Gameplay.Features.CharacterStats;
 using Code.Gameplay.Features.Effects;
 using Code.Infrastructure.Identifiers;
 using System;
@@ -31,24 +31,21 @@ namespace Code.Gameplay.Features.Enemies.Factory
 
         private GameEntity CreateGoblin(Vector2 at)
         {
-            //Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
-            //    .With(x => x[Stats.Speed] = 1)
-            //    .With(x => x[Stats.MaxHp] = 3)
-            //    .With(x => x[Stats.Damage] = 1);
+            Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
+                .With(x => x[Stats.Speed] = 1)
+                .With(x => x[Stats.MaxHp] = 3)
+                .With(x => x[Stats.Damage] = 1);
 
             var entity = CreateEntity.Empty();
             entity.AddId(_identifiers.Next());
             entity.AddEnemyTypeId(EnemyTypeId.Goblin);
             entity.AddWorldPosition(at);
             entity.AddDirection(Vector2.zero);
-            //entity.AddBaseStats(baseStats);
-            //entity.AddStatModifiers(InitStats.EmptyStatDictionary());
-            //entity.AddSpeed(baseStats[Stats.Speed]);
-            //entity.AddCurrentHp(baseStats[Stats.MaxHp]);
-            //entity.AddMaxHp(baseStats[Stats.MaxHp]);;
-            entity.AddSpeed(1);
-            entity.AddCurrentHp(3);
-            entity.AddMaxHp(3);
+            entity.AddBaseStats(baseStats);
+            entity.AddStatModifiers(InitStats.EmptyStatDictionary());
+            entity.AddSpeed(baseStats[Stats.Speed]);
+            entity.AddCurrentHp(baseStats[Stats.MaxHp]);
+            entity.AddMaxHp(baseStats[Stats.MaxHp]);
             entity.AddEffectSetups(new List<EffectSetup> { new EffectSetup() { EffectTypeId = EffectTypeId.Damage, Value = 1/*baseStats[Stats.Damage]*/ } });
             entity.AddRadius(0.3f);
             entity.AddTargetBuffer(new List<int>(1));

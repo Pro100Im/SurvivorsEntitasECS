@@ -1,7 +1,8 @@
 using Code.Common.Entity;
 using Code.Common.Extensions;
-//using Code.Gameplay.Features.CharacterStats;
+using Code.Gameplay.Features.CharacterStats;
 using Code.Infrastructure.Identifiers;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Code.Gameplay.Features.Hero.Factory
@@ -17,19 +18,19 @@ namespace Code.Gameplay.Features.Hero.Factory
 
         public GameEntity CreateHero(Vector3 at)
         {
-            //Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
-            //  .With(x => x[Stats.Speed] = 2)
-            //  .With(x => x[Stats.MaxHp] = 100);
+            Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
+              .With(x => x[Stats.Speed] = 2)
+              .With(x => x[Stats.MaxHp] = 100);
 
             var entity = CreateEntity.Empty();
             entity.AddId(_identifiers.Next());
             entity.AddWorldPosition(at);
-            //entity.AddBaseStats(baseStats);
-            //entity.AddStatModifiers(InitStats.EmptyStatDictionary());
+            entity.AddBaseStats(baseStats);
+            entity.AddStatModifiers(InitStats.EmptyStatDictionary());
             entity.AddDirection(Vector2.zero);
-            //entity.AddSpeed(baseStats[Stats.Speed]);
-            //entity.AddCurrentHp(baseStats[Stats.MaxHp]);
-            //entity.AddMaxHp(baseStats[Stats.MaxHp]);
+            entity.AddSpeed(baseStats[Stats.Speed]);
+            entity.AddCurrentHp(baseStats[Stats.MaxHp]);
+            entity.AddMaxHp(baseStats[Stats.MaxHp]);
             entity.AddSpeed(2);
             entity.AddCurrentHp(100);
             entity.AddMaxHp(100);
