@@ -31,9 +31,6 @@ namespace Code.Gameplay.Features.Hero.Factory
             entity.AddSpeed(baseStats[Stats.Speed]);
             entity.AddCurrentHp(baseStats[Stats.MaxHp]);
             entity.AddMaxHp(baseStats[Stats.MaxHp]);
-            entity.AddSpeed(2);
-            entity.AddCurrentHp(100);
-            entity.AddMaxHp(100);
             //entity.AddExperience(0);
             entity.AddViewPath("Gameplay/Hero/hero");
             //entity.AddPickupRadius(1f);

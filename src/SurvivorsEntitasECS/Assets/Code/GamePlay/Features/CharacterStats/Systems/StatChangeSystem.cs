@@ -6,7 +6,6 @@ namespace Code.Gameplay.Features.CharacterStats.Systems
     public class StatChangeSystem : IExecuteSystem
     {
         private readonly IGroup<GameEntity> _statOwners;
-        private readonly IGroup<GameEntity> _statChanges;
 
         private readonly GameContext _game;
 
@@ -19,12 +18,6 @@ namespace Code.Gameplay.Features.CharacterStats.Systems
                 GameMatcher.Id,
                 GameMatcher.BaseStats,
                 GameMatcher.StatModifiers));
-
-            _statChanges = game.GetGroup(GameMatcher
-                .AllOf(
-                GameMatcher.StatChange,
-                GameMatcher.TargetId,
-                GameMatcher.EffectValue));
         }
 
         public void Execute()
@@ -35,13 +28,9 @@ namespace Code.Gameplay.Features.CharacterStats.Systems
                 {
                     statOwner.statModifiers.Value[stat] = 0;
 
-                    //foreach(GameEntity statChange in _game.TargetStatChanges(stat, statOwner.id.Value))
-                    //    statOwner.statModifiers.Value[stat] += statChange.effectValue.Value;
-
-                    foreach(GameEntity statChange in _statChanges)
+                    foreach(GameEntity statChange in _game.TargetStatChanges(stat, statOwner.id.Value))
                     {
-                        if(statChange.targetId.Value == statOwner.id.Value)
-                            statOwner.statModifiers.Value[stat] += statChange.effectValue.Value;
+                        statOwner.statModifiers.Value[stat] += statChange.effectValue.Value;
                     }
                 }
             }
