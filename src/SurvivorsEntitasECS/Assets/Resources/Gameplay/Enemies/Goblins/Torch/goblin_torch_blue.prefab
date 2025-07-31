@@ -119,8 +119,8 @@ MonoBehaviour:
   Renderer: {fileID: 3224600182354190819}
   Animator: {fileID: 1049083796407712975}
   FreezeColor: {r: 0.21960784, g: 0.6392157, b: 0.74509805, a: 1}
-  FreezeOutlineSize: 0.54
-  FreezeOutlineSmoothness: 2.04
+  FreezeOutlineSize: 2.5
+  FreezeOutlineSmoothness: 5
   PoisonColor: {r: 0.4033143, g: 0.74509805, b: 0.21960782, a: 1}
   PoisonColorIntensity: 0.412
 --- !u!1001 &3328712635861724350
