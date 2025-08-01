@@ -37,14 +37,15 @@ namespace Code.Gameplay.Features.Abilities.Factory
         {
             AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.OrbitingMushroom, level);
 
-            return CreateEntity.Empty();
-            //.AddId(_identifiers.Next())
-            //.AddAbilityId(AbilityId.OrbitingMushroom)
-            //.AddCooldown(abilityLevel.Cooldown)
-            //.With(x => x.isOrbitingMushroomAbility = true)
-            //.With(x => x.isRecreatedOnUpgrade = true)
-            //.PutOnCooldown();
-            //;
+            var entity = CreateEntity.Empty();
+            entity.AddId(_identifiers.Next());
+            entity.AddAbilityId(AbilityId.OrbitingMushroom);
+            entity.AddCooldown(abilityLevel.Cooldown);
+            entity.With(x => x.isOrbitingMushroomAbility = true);
+            entity.With(x => x.isRecreatedOnUpgrade = true);
+            entity.PutOnCooldown();
+
+            return entity;
         }
 
         public GameEntity CreateGarlicAuraAbility()

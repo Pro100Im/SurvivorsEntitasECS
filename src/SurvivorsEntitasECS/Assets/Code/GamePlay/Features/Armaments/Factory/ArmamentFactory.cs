@@ -24,26 +24,13 @@ namespace Code.Gameplay.Features.Armaments.Factory
             _staticDataService = staticDataService;
         }
 
-        //public GameEntity CreateVegetableBolt(int level, Vector3 at)
-        //{
-        //    AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.VegetableBolt, level);
-        //    ProjectileSetup setup = abilityLevel.ProjectileSetup;
-
-        //    var entity = CreateProjectileEntity(at, abilityLevel, setup);
-        //    entity.AddParentAbility(AbilityId.VegetableBolt);
-        //    //entity.With(x => x.isRotationAlignedAlongDirection = true);
-
-        //    return entity;
-
-        //}
-
         public GameEntity CreateVegetableBolt(int level, Vector3 at)
         {
             AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.VegetableBolt, level);
             ProjectileSetup setup = abilityLevel.ProjectileSetup;
 
             var entity = CreateProjectileEntity(at, abilityLevel, setup);
-            //entity.AddParentAbility(AbilityId.VegetableBolt);
+            entity.AddParentAbility(AbilityId.VegetableBolt);
             entity.With(x => x.isRotationAlignedAlongDirection = true);
 
             return entity;
@@ -56,8 +43,8 @@ namespace Code.Gameplay.Features.Armaments.Factory
 
             var entity = CreateProjectileEntity(at, abilityLevel, setup);
             entity.AddParentAbility(AbilityId.OrbitingMushroom);
-            //entity.AddOrbitPhase(phase);
-            //entity.AddOrbitRadius(setup.OrbitRadius);
+            entity.AddOrbitPhase(phase);
+            entity.AddOrbitRadius(setup.OrbitRadius);
 
             return entity;
         }
@@ -78,7 +65,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
             entity.AddTargetBuffer(new List<int>(TargetBufferSize));
             entity.With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: !abilityLevel.EffectSetups.IsNullOrEmpty());
             //entity.With(x => x.AddStatusSetups(abilityLevel.StatusSetups), when: !abilityLevel.StatusSetups.IsNullOrEmpty());
-            //entity.AddProducerId(producerId);
+            entity.AddProducerId(producerId);
             entity.AddWorldPosition(Vector3.zero);
             //entity.With(x => x.isFollowingProducer = true);
 
@@ -120,7 +107,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
             //entity.With(x => x.AddEffectSetups(config.EffectSetups), when: !config.EffectSetups.IsNullOrEmpty());
             //entity.With(x => x.AddStatusSetups(config.StatusSetups), when: !config.StatusSetups.IsNullOrEmpty());
             //entity.AddViewPrefab(config.ViewPrefab);
-            //entity.AddProducerId(producerId);
+            entity.AddProducerId(producerId);
             entity.AddWorldPosition(at);
             entity.With(x => x.isReadyToCollectTargets = true);
             entity.AddSelfDestructTimer(1);
