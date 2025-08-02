@@ -1341,7 +1341,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.708807, b: 1, a: 0}
+        key0: {r: 0, g: 0.708807, b: 1, a: 0.25882354}
         key1: {r: 0.5707547, g: 0.8440309, b: 1, a: 0.08235294}
         key2: {r: 0, g: 0, b: 0, a: 0.07058824}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4807,6 +4807,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4828,8 +4831,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1714090845
-  m_SortingLayer: 5
+  m_SortingLayerID: 1599945423
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -6180,7 +6183,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.65162754, b: 1, a: 0.22352941}
+        key0: {r: 0, g: 0.65162754, b: 1, a: 0.36078432}
         key1: {r: 1, g: 1, b: 1, a: 0.07058824}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -6199,7 +6202,7 @@ ParticleSystem:
         atime0: 0
         atime1: 60909
         atime2: 64571
-        atime3: 65342
+        atime3: 64571
         atime4: 0
         atime5: 0
         atime6: 0
@@ -9646,6 +9649,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9667,8 +9673,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1714090845
-  m_SortingLayer: 5
+  m_SortingLayerID: 1599945423
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9711,9 +9717,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7897260696194773655}
-  - component: {fileID: 2893445765622195075}
+  - component: {fileID: 7441548940675256321}
   - component: {fileID: 5776008095014193973}
-  - component: {fileID: 7474350241001614212}
+  - component: {fileID: 4507112034578249727}
   m_Layer: 0
   m_Name: garlicAura
   m_TagString: Untagged
@@ -9737,7 +9743,7 @@ Transform:
   - {fileID: 5444044905996140599}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2893445765622195075
+--- !u!114 &7441548940675256321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9746,7 +9752,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8783522936459097793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511653e70f1b4434a642cfce8b90ee4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 80e9e6d76a148574fa7021028a8f886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5776008095014193973
@@ -9761,8 +9767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05134c594a6494d9f8c83798b4783ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityView: {fileID: 2893445765622195075}
---- !u!114 &7474350241001614212
+  EntityView: {fileID: 7441548940675256321}
+--- !u!114 &4507112034578249727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9774,5 +9780,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882fcc7faf9e42049cb691dc92beece5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityView: {fileID: 2893445765622195075}
+  EntityView: {fileID: 7441548940675256321}
   Container: {fileID: 5444044905996140599}

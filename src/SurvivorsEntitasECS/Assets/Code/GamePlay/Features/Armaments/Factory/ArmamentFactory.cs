@@ -64,10 +64,10 @@ namespace Code.Gameplay.Features.Armaments.Factory
             entity.AddCollectTargetsTimer(0);
             entity.AddTargetBuffer(new List<int>(TargetBufferSize));
             entity.With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: !abilityLevel.EffectSetups.IsNullOrEmpty());
-            //entity.With(x => x.AddStatusSetups(abilityLevel.StatusSetups), when: !abilityLevel.StatusSetups.IsNullOrEmpty());
+            entity.With(x => x.AddStatusSetups(abilityLevel.StatusSetups), when: !abilityLevel.StatusSetups.IsNullOrEmpty());
             entity.AddProducerId(producerId);
             entity.AddWorldPosition(Vector3.zero);
-            //entity.With(x => x.isFollowingProducer = true);
+            entity.With(x => x.isFollowingProducer = true);
 
             return entity;
         }

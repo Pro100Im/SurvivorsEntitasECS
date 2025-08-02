@@ -23,8 +23,10 @@ namespace Code.Gameplay.Features.Hero.Systems
         public void Initialize()
         {
             _heroFactory.CreateHero(_levelDataProvider.StartPoint);
+
             _abilityFactory.CreateVegetableBoltAbility(1);
             _abilityFactory.CreateOrbitingMushroomAbility(1);
+            _abilityFactory.CreateGarlicAuraAbility();
         }
 
         //private readonly IAbilityUpgradeService _abilityUpgradeService;
