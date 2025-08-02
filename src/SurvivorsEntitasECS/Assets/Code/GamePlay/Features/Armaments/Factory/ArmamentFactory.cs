@@ -2,10 +2,9 @@
 using Code.Common.Extensions;
 using Code.Gameplay.Features.Abilities;
 using Code.Gameplay.Features.Abilities.Configs;
-//using Code.Gameplay.Features.Enchants;
+using Code.Gameplay.Features.Enchants;
 using Code.Gameplay.StaticData;
 using Code.Infrastructure.Identifiers;
-using Entitas;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -97,16 +96,16 @@ namespace Code.Gameplay.Features.Armaments.Factory
 
         public GameEntity CreateExplosion(int producerId, Vector3 at)
         {
-            //EnchantConfig config = _staticDataService.GetEnchantConfig(EnchantTypeId.ExplosiveArmaments);
+            EnchantConfig config = _staticDataService.GetEnchantConfig(EnchantTypeId.ExplosiveArmaments);
 
             var entity = CreateEntity.Empty();
             entity.AddId(_identifiers.Next());
             entity.AddLayerMask(CollisionLayer.Enemy.AsMask());
-            //entity.AddRadius(config.Radius);
+            entity.AddRadius(config.Radius);
             entity.AddTargetBuffer(new List<int>(TargetBufferSize));
-            //entity.With(x => x.AddEffectSetups(config.EffectSetups), when: !config.EffectSetups.IsNullOrEmpty());
-            //entity.With(x => x.AddStatusSetups(config.StatusSetups), when: !config.StatusSetups.IsNullOrEmpty());
-            //entity.AddViewPrefab(config.ViewPrefab);
+            entity.With(x => x.AddEffectSetups(config.EffectSetups), when: !config.EffectSetups.IsNullOrEmpty());
+            entity.With(x => x.AddStatusSetups(config.StatusSetups), when: !config.StatusSetups.IsNullOrEmpty());
+            entity.AddViewPrefab(config.ViewPrefab);
             entity.AddProducerId(producerId);
             entity.AddWorldPosition(at);
             entity.With(x => x.isReadyToCollectTargets = true);
@@ -114,6 +113,5 @@ namespace Code.Gameplay.Features.Armaments.Factory
 
             return entity;
         }
-
     }
 }

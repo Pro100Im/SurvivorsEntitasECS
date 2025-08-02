@@ -35,7 +35,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7559575448872867541
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -49,6 +49,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -103,6 +104,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -124,8 +128,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1714090845
-  m_SortingLayer: 5
+  m_SortingLayerID: -1397664945
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1808933491, guid: 7c0cb9e34ca7abb40af532533699b608, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -147,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5085295905152078495}
-  - component: {fileID: 6902555966744461871}
+  - component: {fileID: 7639506661674007883}
   - component: {fileID: 5978876680084877412}
   m_Layer: 0
   m_Name: explosion
@@ -172,7 +176,7 @@ Transform:
   - {fileID: 872144433148828180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6902555966744461871
+--- !u!114 &7639506661674007883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +185,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6132165199372968982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511653e70f1b4434a642cfce8b90ee4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 80e9e6d76a148574fa7021028a8f886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5978876680084877412
@@ -196,4 +200,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05134c594a6494d9f8c83798b4783ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityView: {fileID: 6902555966744461871}
+  EntityView: {fileID: 7639506661674007883}

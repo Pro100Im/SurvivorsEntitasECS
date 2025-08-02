@@ -38,6 +38,12 @@ namespace Code.Gameplay.Features.Hero.Systems
                 StatusTypeId = Statuses.StatusTypeId.PoisonEnchant,
                 Duration = 10
             }, hero.id.Value, hero.id.Value);
+
+            _statusApplier.ApplyStatus(new Statuses.StatusSetup()
+            {
+                StatusTypeId = Statuses.StatusTypeId.ExplosiveEnchant,
+                Duration = 15
+            }, hero.id.Value, hero.id.Value);
         }
 
         //private readonly IAbilityUpgradeService _abilityUpgradeService;
