@@ -1,7 +1,7 @@
 ﻿using System;
 using Code.Common.Entity;
 using Code.Common.Extensions;
-//using Code.Gameplay.Features.Enchants;
+using Code.Gameplay.Features.Enchants;
 using Code.Infrastructure.Identifiers;
 
 namespace Code.Gameplay.Features.Statuses.Factory
@@ -79,12 +79,12 @@ namespace Code.Gameplay.Features.Statuses.Factory
             var entity = CreateEntity.Empty();
             entity.AddId(_identifiers.Next());
             entity.AddStatusTypeId(StatusTypeId.PoisonEnchant);
-            //entity.AddEnchantTypeId(EnchantTypeId.PoisonArmaments);
+            entity.AddEnchantTypeId(EnchantTypeId.PoisonArmaments);
             entity.AddEffectValue(setup.Value);
             entity.AddProducerId(producerId);
             entity.AddTargetId(targetId);
             entity.With(x => x.isStatus = true);
-            //entity.With(x => x.isPoisonEnchant = true);
+            entity.With(x => x.isPoisonEnchant = true);
 
             return entity;
         }
@@ -94,12 +94,12 @@ namespace Code.Gameplay.Features.Statuses.Factory
             var entity = CreateEntity.Empty();
             entity.AddId(_identifiers.Next());
             entity.AddStatusTypeId(StatusTypeId.ExplosiveEnchant);
-            //entity.AddEnchantTypeId(EnchantTypeId.ExplosiveArmaments);
+            entity.AddEnchantTypeId(EnchantTypeId.ExplosiveArmaments);
             entity.AddEffectValue(setup.Value);
             entity.AddProducerId(producerId);
             entity.AddTargetId(targetId);
             entity.With(x => x.isStatus = true);
-            //entity.With(x => x.isExplosiveEnchant = true);
+            entity.With(x => x.isExplosiveEnchant = true);
 
             return entity;
         }
