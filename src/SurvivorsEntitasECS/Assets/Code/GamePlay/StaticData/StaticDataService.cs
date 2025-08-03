@@ -5,8 +5,8 @@ using Code.Gameplay.Features.Abilities;
 using Code.Gameplay.Features.Abilities.Configs;
 using Code.Gameplay.Features.Enchants;
 //using Code.Gameplay.Features.LevelUp;
-//using Code.Gameplay.Features.Loot;
-//using Code.Gameplay.Features.Loot.Configs;
+using Code.Gameplay.Features.Loot;
+using Code.Gameplay.Features.Loot.Configs;
 //using Code.Gameplay.Windows;
 //using Code.Gameplay.Windows.Configs;
 //using Code.Meta.Features.AfkGain.Configs;
@@ -19,7 +19,7 @@ namespace Code.Gameplay.StaticData
     {
         private Dictionary<AbilityId, AbilityConfig> _abilityById;
         private Dictionary<EnchantTypeId, EnchantConfig> _enchantById;
-        //private Dictionary<LootTypeId, LootConfig> _lootById;
+        private Dictionary<LootTypeId, LootConfig> _lootById;
         //private Dictionary<WindowId, GameObject> _windowPrefabsById;
         //private List<ShopItemConfig> _shopItemConfigs;
         //private LevelUpConfig _levelUp;
@@ -36,7 +36,7 @@ namespace Code.Gameplay.StaticData
         {
             LoadAbilities();
             LoadEnchants();
-            //LoadLoot();
+            LoadLoot();
             //LoadWindows();
             //LoadShopItems();
             //LoadLevelUpRules();
@@ -51,13 +51,13 @@ namespace Code.Gameplay.StaticData
             throw new Exception($"Ability config for {abilityId} was not found");
         }
 
-        //public LootConfig GetLootConfig(LootTypeId lootTypeId)
-        //{
-        //  if (_lootById.TryGetValue(lootTypeId, out LootConfig config))
-        //    return config;
+        public LootConfig GetLootConfig(LootTypeId lootTypeId)
+        {
+            if(_lootById.TryGetValue(lootTypeId, out LootConfig config))
+                return config;
 
-        //  throw new Exception($"Loot config for {lootTypeId} was not found");
-        //}
+            throw new Exception($"Loot config for {lootTypeId} was not found");
+        }
 
         //public ShopItemConfig GetShopItemConfig(ShopItemId shopItemId) => 
         //  _shopItemConfigs.FirstOrDefault(x => x.ShopItemId == shopItemId);
@@ -112,12 +112,12 @@ namespace Code.Gameplay.StaticData
               .ToDictionary(x => x.AbilityId, x => x);
         }
 
-        //private void LoadLoot()
-        //{
-        //  _lootById = Resources
-        //    .LoadAll<LootConfig>("Configs/Loot")
-        //    .ToDictionary(x => x.LootTypeId, x => x);
-        //}
+        private void LoadLoot()
+        {
+            _lootById = Resources
+              .LoadAll<LootConfig>("Configs/Loot")
+              .ToDictionary(x => x.LootTypeId, x => x);
+        }
 
         //private void LoadShopItems() =>
         //  _shopItemConfigs = Resources.LoadAll<ShopItemConfig>("Configs/ShopItems").ToList();

@@ -15,7 +15,7 @@ using Code.Gameplay.Features.Statuses.Applier;
 using Code.Gameplay.Features.Statuses.Factory;
 //using Code.Gameplay.Features.LevelUp.Services;
 //using Code.Gameplay.Features.LevelUp.Windows;
-//using Code.Gameplay.Features.Loot.Factory;
+using Code.Gameplay.Features.Loot.Factory;
 using Code.Gameplay.Input.Service;
 using Code.Gameplay.Levels;
 using Code.Gameplay.StaticData;
@@ -124,7 +124,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IAbilityFactory>().To<AbilityFactory>().AsSingle();
             Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
             Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
-            //Container.Bind<ILootFactory>().To<LootFactory>().AsSingle();
+            Container.Bind<ILootFactory>().To<LootFactory>().AsSingle();
             //Container.Bind<IShopItemFactory>().To<ShopItemFactory>().AsSingle();
         }
 

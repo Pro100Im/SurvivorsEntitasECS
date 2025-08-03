@@ -6,6 +6,7 @@ using Code.Gameplay.Features.EffectApplication;
 using Code.Gameplay.Features.Effects;
 using Code.Gameplay.Features.Enchants;
 using Code.Gameplay.Features.Enemies;
+using Code.Gameplay.Features.Loot;
 using Code.Gameplay.Features.Statuses;
 using Code.Gameplay.Features.Statuses.Systems;
 using Code.Gameplay.Features.TargetCollection;
@@ -28,6 +29,8 @@ namespace Code.GamePlay.Features
             Add(systemFactory.Create<HeroFeature>());
             Add(systemFactory.Create<EnemyFeature>());
 
+            Add(systemFactory.Create<LootingFeature>());
+
             Add(systemFactory.Create<MovementFeature>());
             Add(systemFactory.Create<AbilityFeature>());
             Add(systemFactory.Create<ArmamentFeature>());
@@ -40,8 +43,9 @@ namespace Code.GamePlay.Features
             Add(systemFactory.Create<StatusFeature>());
             Add(systemFactory.Create<StatsFeature>());
 
-            Add(systemFactory.Create<DeathFeature>());
             Add(systemFactory.Create<StatusVisualsFeature>());
+
+            Add(systemFactory.Create<DeathFeature>());
             Add(systemFactory.Create<ProcessDestructedFeature>());
         }
     }
