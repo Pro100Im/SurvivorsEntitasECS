@@ -43,9 +43,8 @@ namespace Code.GamePlay.Features
             Add(systemFactory.Create<StatusFeature>());
             Add(systemFactory.Create<StatsFeature>());
 
-            Add(systemFactory.Create<StatusVisualsFeature>());
-
             Add(systemFactory.Create<DeathFeature>());
+            Add(systemFactory.Create<StatusVisualsFeature>());
             Add(systemFactory.Create<ProcessDestructedFeature>());
         }
     }
