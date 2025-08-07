@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-//using Code.Gameplay.Features.Abilities.Upgrade;
+using Code.Gameplay.Features.Abilities.Upgrade;
 using Code.Gameplay.Features.Armaments.Factory;
 using Entitas;
 
@@ -12,12 +12,12 @@ namespace Code.Gameplay.Features.Abilities.Systems
         private readonly IArmamentFactory _armamentFactory;
         private readonly IGroup<GameEntity> _abilities;
         private readonly IGroup<GameEntity> _heroes;
-        //private readonly IAbilityUpgradeService _abilityUpgradeService;
+        private readonly IAbilityUpgradeService _abilityUpgradeService;
 
-        public GarlicAuraAbilitySystem(GameContext game, IArmamentFactory armamentFactory/*, IAbilityUpgradeService abilityUpgradeService*/)
+        public GarlicAuraAbilitySystem(GameContext game, IArmamentFactory armamentFactory, IAbilityUpgradeService abilityUpgradeService)
         {
             _armamentFactory = armamentFactory;
-            //_abilityUpgradeService = abilityUpgradeService;
+            _abilityUpgradeService = abilityUpgradeService;
             _abilities = game.GetGroup(GameMatcher
               .AllOf(GameMatcher.GarlicAuraAbility)
               .NoneOf(GameMatcher.Active));
@@ -34,7 +34,7 @@ namespace Code.Gameplay.Features.Abilities.Systems
             {
                 foreach(GameEntity hero in _heroes)
                 {
-                    int level = 1; /*_abilityUpgradeService.GetAbilityLevel(AbilityId.GarlicAura);*/
+                    int level = _abilityUpgradeService.GetAbilityLevel(AbilityId.GarlicAura);
                     _armamentFactory.CreateEffectAura(AbilityId.GarlicAura, hero.id.Value, level);
 
                     ability.isActive = true;

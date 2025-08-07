@@ -4,11 +4,11 @@ using System.Linq;
 using Code.Gameplay.Features.Abilities;
 using Code.Gameplay.Features.Abilities.Configs;
 using Code.Gameplay.Features.Enchants;
-//using Code.Gameplay.Features.LevelUp;
+using Code.Gameplay.Features.LevelUp;
 using Code.Gameplay.Features.Loot;
 using Code.Gameplay.Features.Loot.Configs;
-//using Code.Gameplay.Windows;
-//using Code.Gameplay.Windows.Configs;
+using Code.Gameplay.Windows;
+using Code.Gameplay.Windows.Configs;
 //using Code.Meta.Features.AfkGain.Configs;
 //using Code.Meta.UI.Shop.Items;
 using UnityEngine;
@@ -20,9 +20,9 @@ namespace Code.Gameplay.StaticData
         private Dictionary<AbilityId, AbilityConfig> _abilityById;
         private Dictionary<EnchantTypeId, EnchantConfig> _enchantById;
         private Dictionary<LootTypeId, LootConfig> _lootById;
-        //private Dictionary<WindowId, GameObject> _windowPrefabsById;
+        private Dictionary<WindowId, GameObject> _windowPrefabsById;
         //private List<ShopItemConfig> _shopItemConfigs;
-        //private LevelUpConfig _levelUp;
+        private LevelUpConfig _levelUp;
         //private AfkGainConfig _afkGainConfig;
 
         //public AfkGainConfig AfkGain => _afkGainConfig;
@@ -37,9 +37,9 @@ namespace Code.Gameplay.StaticData
             LoadAbilities();
             LoadEnchants();
             LoadLoot();
-            //LoadWindows();
+            LoadWindows();
             //LoadShopItems();
-            //LoadLevelUpRules();
+            LoadLevelUpRules();
             //LoadAfkGainConfig();
         }
 
@@ -75,15 +75,15 @@ namespace Code.Gameplay.StaticData
             return config.Levels[level - 1];
         }
 
-        //public int MaxLevel() => _levelUp.MaxLevel;
+        public int MaxLevel() => _levelUp.MaxLevel;
 
-        //public float ExperienceForLevel(int level) =>
-        //  _levelUp.ExperienceForLevel[level];
+        public float ExperienceForLevel(int level) =>
+          _levelUp.ExperienceForLevel[level];
 
-        //public GameObject GetWindowPrefab(WindowId id) =>
-        //  _windowPrefabsById.TryGetValue(id, out GameObject prefab)
-        //    ? prefab
-        //    : throw new Exception($"Prefab config for window {id} was not found");
+        public GameObject GetWindowPrefab(WindowId id) =>
+          _windowPrefabsById.TryGetValue(id, out GameObject prefab)
+            ? prefab
+            : throw new Exception($"Prefab config for window {id} was not found");
 
         public EnchantConfig GetEnchantConfig(EnchantTypeId typeId)
         {
@@ -122,18 +122,18 @@ namespace Code.Gameplay.StaticData
         //private void LoadShopItems() =>
         //  _shopItemConfigs = Resources.LoadAll<ShopItemConfig>("Configs/ShopItems").ToList();
 
-        //private void LoadWindows()
-        //{
-        //  _windowPrefabsById = Resources
-        //    .Load<WindowsConfig>("Configs/Windows/windowsConfig")
-        //    .WindowConfigs
-        //    .ToDictionary(x => x.Id, x => x.Prefab);
-        //}
+        private void LoadWindows()
+        {
+            _windowPrefabsById = Resources
+              .Load<WindowsConfig>("Configs/Windows/windowsConfig")
+              .WindowConfigs
+              .ToDictionary(x => x.Id, x => x.Prefab);
+        }
 
-        //private void LoadLevelUpRules()
-        //{
-        //  _levelUp = Resources
-        //    .Load<LevelUpConfig>("Configs/LevelUp/levelUpConfig");
-        //}
+        private void LoadLevelUpRules()
+        {
+            _levelUp = Resources
+              .Load<LevelUpConfig>("Configs/LevelUp/levelUpConfig");
+        }
     }
 }

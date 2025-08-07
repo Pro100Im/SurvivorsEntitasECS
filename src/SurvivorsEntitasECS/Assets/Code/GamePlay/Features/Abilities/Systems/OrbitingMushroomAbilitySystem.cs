@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Code.Common.Extensions;
 using Code.Gameplay.Features.Abilities.Configs;
-//using Code.Gameplay.Features.Abilities.Upgrade;
+using Code.Gameplay.Features.Abilities.Upgrade;
 using Code.Gameplay.Features.Armaments.Factory;
 using Code.Gameplay.Features.Cooldowns;
 using Code.Gameplay.StaticData;
@@ -15,7 +13,7 @@ namespace Code.Gameplay.Features.Abilities.Systems
     {
         private readonly IStaticDataService _staticDataService;
         private readonly IArmamentFactory _armamentFactory;
-        //private readonly IAbilityUpgradeService _abilityUpgradeService;
+        private readonly IAbilityUpgradeService _abilityUpgradeService;
 
         private readonly List<GameEntity> _buffer = new(1);
 
@@ -25,11 +23,11 @@ namespace Code.Gameplay.Features.Abilities.Systems
         public OrbitingMushroomAbilitySystem(
           GameContext game,
           IArmamentFactory armamentFactory,
-          IStaticDataService staticDataService)
-        //IAbilityUpgradeService abilityUpgradeService)
+          IStaticDataService staticDataService,
+        IAbilityUpgradeService abilityUpgradeService)
         {
             _staticDataService = staticDataService;
-            //_abilityUpgradeService = abilityUpgradeService;
+            _abilityUpgradeService = abilityUpgradeService;
             _armamentFactory = armamentFactory;
 
             _abilities = game.GetGroup(GameMatcher
@@ -48,7 +46,7 @@ namespace Code.Gameplay.Features.Abilities.Systems
             foreach(GameEntity ability in _abilities.GetEntities(_buffer))
                 foreach(GameEntity hero in _heroes)
                 {
-                    int level = 1;/*_abilityUpgradeService.GetAbilityLevel(AbilityId.OrbitingMushroom);*/
+                    int level = _abilityUpgradeService.GetAbilityLevel(AbilityId.OrbitingMushroom);
                     AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.OrbitingMushroom, level);
 
                     int projectileCount = abilityLevel.ProjectileSetup.ProjectileCount;

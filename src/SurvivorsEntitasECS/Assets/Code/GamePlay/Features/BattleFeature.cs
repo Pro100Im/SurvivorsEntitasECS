@@ -6,6 +6,7 @@ using Code.Gameplay.Features.EffectApplication;
 using Code.Gameplay.Features.Effects;
 using Code.Gameplay.Features.Enchants;
 using Code.Gameplay.Features.Enemies;
+using Code.Gameplay.Features.LevelUp;
 using Code.Gameplay.Features.Loot;
 using Code.Gameplay.Features.Statuses;
 using Code.Gameplay.Features.Statuses.Systems;
@@ -30,6 +31,7 @@ namespace Code.GamePlay.Features
             Add(systemFactory.Create<EnemyFeature>());
 
             Add(systemFactory.Create<LootingFeature>());
+            Add(systemFactory.Create<LevelUpFeature>());
 
             Add(systemFactory.Create<MovementFeature>());
             Add(systemFactory.Create<AbilityFeature>());

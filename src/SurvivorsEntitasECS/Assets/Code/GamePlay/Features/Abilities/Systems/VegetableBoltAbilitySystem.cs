@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Code.Common.Extensions;
-//using Code.Gameplay.Features.Abilities.Upgrade;
+using Code.Gameplay.Features.Abilities.Upgrade;
 using Code.Gameplay.Features.Armaments.Factory;
 using Code.Gameplay.Features.Cooldowns;
 using Code.Gameplay.StaticData;
@@ -14,7 +14,7 @@ namespace Code.Gameplay.Features.Abilities.Systems
         private readonly List<GameEntity> _buffer = new(4);
 
         private readonly IArmamentFactory _armamentFactory;
-        //private readonly IAbilityUpgradeService _abilityUpgradeService;
+        private readonly IAbilityUpgradeService _abilityUpgradeService;
         private readonly IStaticDataService _staticDataService;
 
         private readonly IGroup<GameEntity> _abilities;
@@ -24,12 +24,12 @@ namespace Code.Gameplay.Features.Abilities.Systems
         public VegetableBoltAbilitySystem(
           GameContext game,
           IArmamentFactory armamentFactory,
-          //IAbilityUpgradeService abilityUpgradeService,
+          IAbilityUpgradeService abilityUpgradeService,
           IStaticDataService staticDataService)
         {
             _staticDataService = staticDataService;
             _armamentFactory = armamentFactory;
-            //_abilityUpgradeService = abilityUpgradeService;
+            _abilityUpgradeService = abilityUpgradeService;
 
             _abilities = game.GetGroup(GameMatcher
               .AllOf(
@@ -55,9 +55,8 @@ namespace Code.Gameplay.Features.Abilities.Systems
                     if(_enemies.count <= 0)
                         continue;
 
-                    int level = 1; /*_abilityUpgradeService.GetAbilityLevel(AbilityId.VegetableBolt);*/
-
-                    var entity = _armamentFactory.CreateVegetableBolt(1, hero.worldPosition.Value);
+                    var level = _abilityUpgradeService.GetAbilityLevel(AbilityId.VegetableBolt);
+                    var entity = _armamentFactory.CreateVegetableBolt(level, hero.worldPosition.Value);
 
                     entity.AddProducerId(hero.id.Value);
                     entity.ReplaceDirection((FirstAvailableTarget().worldPosition.Value - hero.worldPosition.Value).normalized);

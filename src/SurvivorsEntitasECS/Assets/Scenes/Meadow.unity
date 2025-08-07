@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 23341869}
   - component: {fileID: 23341872}
   - component: {fileID: 23341871}
+  - component: {fileID: 23341873}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -213,6 +214,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Initializers:
   - {fileID: 23341871}
+  - {fileID: 23341873}
+--- !u!114 &23341873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23341868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee75dcc7604011ac3e033429bda0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIRoot: {fileID: 741146136}
 --- !u!1 &508569001
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +472,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1be5b602c5a7b2c40a29e9050b2b7a00, type: 3}
+--- !u!224 &741146136 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 445637680388909683, guid: 1be5b602c5a7b2c40a29e9050b2b7a00, type: 3}
+  m_PrefabInstance: {fileID: 741146135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &782900810
 GameObject:
   m_ObjectHideFlags: 0
