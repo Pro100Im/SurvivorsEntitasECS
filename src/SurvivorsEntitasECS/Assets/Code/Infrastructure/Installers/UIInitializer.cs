@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Code.Infrastructure.Installers
 {
-  public class UIInitializer : MonoBehaviour, IInitializable
+    public class UIInitializer : MonoBehaviour, IInitializable
     {
         private IWindowFactory _windowFactory;
 
