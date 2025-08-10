@@ -1,5 +1,6 @@
 using Code.Common.Entity;
 using Code.Common.Extensions;
+using Code.Gameplay.Common.Time;
 using Code.Gameplay.StaticData;
 using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.States.StateMachine;
@@ -14,6 +15,7 @@ namespace Code.Infrastructure.States.GameStates
         private readonly IGameStateMachine _stateMachine;
         private readonly IStaticDataService _staticDataService;
         private readonly IProgressProvider _progressProvider;
+        private readonly ITimeService _timeService;
 
         //private readonly ISaveLoadService _saveLoadService;
 
@@ -21,20 +23,21 @@ namespace Code.Infrastructure.States.GameStates
           IGameStateMachine stateMachine,
           IProgressProvider progressProvider,
           //ISaveLoadService saveLoadService,
-          IStaticDataService staticDataService)
+          IStaticDataService staticDataService,
+          ITimeService timeService)
         {
             //_saveLoadService = saveLoadService;
             _stateMachine = stateMachine;
             _staticDataService = staticDataService;
             _progressProvider = progressProvider;
+            _timeService = timeService;
         }
 
         public override void Enter()
         {
             InitializeProgress();
 
-            _stateMachine.Enter<LoadingHomeScreenState>();
-            //_stateMachine.Enter<ActualizeProgressState>();
+            _stateMachine.Enter<ActualizeProgressState>();
         }
 
         private void InitializeProgress()
@@ -47,13 +50,17 @@ namespace Code.Infrastructure.States.GameStates
 
         private void CreateNewProgress()
         {
-            _progressProvider.SetProgressData(new ProgressData());
+            _progressProvider.SetProgressData(new ProgressData()
+            {
+                LastSimulationTickTime = _timeService.UtcNow
+            });
             //_saveLoadService.CreateProgress();
 
-            //CreateMetaEntity.Empty()
-            //  .With(x => x.isStorage = true)
-            //  .AddGold(0)
-            //  .AddGoldPerSecond(_staticDataService.AfkGain.GoldPerSecond);
+            var entity = CreateMetaEntity.Empty();
+
+            entity.With(x => x.isStorage = true);
+            entity.AddGold(0);
+            entity.AddGoldPerSecond(_staticDataService.AfkGain.GoldPerSecond);
         }
     }
 }

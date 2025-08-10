@@ -9,7 +9,7 @@ using Code.Gameplay.Features.Loot;
 using Code.Gameplay.Features.Loot.Configs;
 using Code.Gameplay.Windows;
 using Code.Gameplay.Windows.Configs;
-//using Code.Meta.Features.AfkGain.Configs;
+using Code.Meta.Features.AfkGain.Configs;
 //using Code.Meta.UI.Shop.Items;
 using UnityEngine;
 
@@ -23,9 +23,9 @@ namespace Code.Gameplay.StaticData
         private Dictionary<WindowId, GameObject> _windowPrefabsById;
         //private List<ShopItemConfig> _shopItemConfigs;
         private LevelUpConfig _levelUp;
-        //private AfkGainConfig _afkGainConfig;
+        private AfkGainConfig _afkGainConfig;
 
-        //public AfkGainConfig AfkGain => _afkGainConfig;
+        public AfkGainConfig AfkGain => _afkGainConfig;
 
         public StaticDataService()
         {
@@ -40,7 +40,7 @@ namespace Code.Gameplay.StaticData
             LoadWindows();
             //LoadShopItems();
             LoadLevelUpRules();
-            //LoadAfkGainConfig();
+            LoadAfkGainConfig();
         }
 
         public AbilityConfig GetAbilityConfig(AbilityId abilityId)
@@ -100,10 +100,10 @@ namespace Code.Gameplay.StaticData
               .ToDictionary(x => x.TypeId, x => x);
         }
 
-        //private void LoadAfkGainConfig()
-        //{
-        //  _afkGainConfig = Resources.Load<AfkGainConfig>("Configs/AfkGainConfig");
-        //}
+        private void LoadAfkGainConfig()
+        {
+            _afkGainConfig = Resources.Load<AfkGainConfig>("Configs/AfkGainConfig");
+        }
 
         private void LoadAbilities()
         {
