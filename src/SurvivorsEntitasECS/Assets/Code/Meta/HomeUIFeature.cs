@@ -1,7 +1,7 @@
 using Code.Infrastructure.Systems;
-//using Code.Meta.UI.GoldHolder.Systems;
-//using Code.Meta.UI.Shop;
-//using Code.Meta.UI.Shop.Systems;
+using Code.Meta.UI.GoldHolder.Systems;
+using Code.Meta.UI.Shop;
+using Code.Meta.UI.Shop.Systems;
 
 namespace Code.Meta
 {
@@ -9,12 +9,12 @@ namespace Code.Meta
   {
     public HomeUIFeature(ISystemFactory systems)
     {
-      //Add(systems.Create<InitializePurchasedItemsSystem>());
-      
-      //Add(systems.Create<RefreshGoldGainBoostSystem>());
-      //Add(systems.Create<RefreshGoldSystem>());
+            //Add(systems.Create<InitializePurchasedItemsSystem>());
 
-      //Add(systems.Create<ShopFeature>());
-    }
+            //Add(systems.Create<RefreshGoldGainBoostSystem>());
+            Add(systems.Create<RefreshGoldSystem>());
+
+            //Add(systems.Create<ShopFeature>());
+        }
   }
 }

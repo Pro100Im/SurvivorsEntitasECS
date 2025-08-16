@@ -28,11 +28,11 @@ using Code.Infrastructure.States.GameStates;
 using Code.Infrastructure.States.StateMachine;
 using Code.Infrastructure.Systems;
 using Code.Infrastructure.View.Factory;
-//using Code.Meta.UI.GoldHolder.Service;
-//using Code.Meta.UI.Shop;
-//using Code.Meta.UI.Shop.Service;
-//using Code.Meta.UI.Shop.Systems;
-//using Code.Meta.UI.Shop.UIFactory;
+using Code.Meta.UI.GoldHolder.Service;
+using Code.Meta.UI.Shop;
+using Code.Meta.UI.Shop.Service;
+using Code.Meta.UI.Shop.Systems;
+using Code.Meta.UI.Shop.UIFactory;
 using Code.Progress.Provider;
 using Code.Progress.SaveLoad;
 //using RSG;
@@ -125,7 +125,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
             Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
             Container.Bind<ILootFactory>().To<LootFactory>().AsSingle();
-            //Container.Bind<IShopItemFactory>().To<ShopItemFactory>().AsSingle();
+            Container.Bind<IShopItemFactory>().To<ShopItemFactory>().AsSingle();
         }
 
         private void BindEntityIndices()
@@ -167,8 +167,8 @@ namespace Code.Infrastructure.Installers
         {
             Container.Bind<IWindowService>().To<WindowService>().AsSingle();
 
-            //Container.Bind<IStorageUIService>().To<StorageUIService>().AsSingle();
-            //Container.Bind<IShopUIService>().To<ShopUIService>().AsSingle();
+            Container.Bind<IStorageUIService>().To<StorageUIService>().AsSingle();
+            Container.Bind<IShopUIService>().To<ShopUIService>().AsSingle();
         }
 
         private void BindUIFactories()
@@ -176,7 +176,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IWindowFactory>().To<WindowFactory>().AsSingle();
             Container.Bind<IEnchantUIFactory>().To<EnchantUIFactory>().AsSingle();
             Container.Bind<IAbilityUIFactory>().To<AbilityUIFactory>().AsSingle();
-            //Container.Bind<IShopUIFactory>().To<ShopUIFactory>().AsSingle();
+            Container.Bind<IShopUIFactory>().To<ShopUIFactory>().AsSingle();
         }
 
         public void Initialize()

@@ -48,12 +48,14 @@ namespace Code.Progress.SaveLoad
         private void HydrateProgress(string serializedProgress)
         {
             _progressProvider.SetProgressData(serializedProgress.FromJson<ProgressData>());
+
             HydrateMetaEntities();
         }
 
         private void HydrateMetaEntities()
         {
             List<EntitySnapshot> snapshots = _progressProvider.EntityData.MetaEntitySnapshots;
+
             foreach(EntitySnapshot snapshot in snapshots)
             {
                 _metaContext

@@ -41,8 +41,6 @@ namespace Code.Infrastructure.States.GameStates
         {
             _actualizationFeature = _systemFactory.Create<ActualizationFeature>();
 
-            _progressProvider.ProgressData.LastSimulationTickTime = _time.UtcNow - _twoDays;
-
             ActualizeProgress(_progressProvider.ProgressData);
 
             _stateMachine.Enter<LoadingHomeScreenState>();

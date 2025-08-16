@@ -16,7 +16,7 @@ namespace Code.Meta
 
             Add(systems.Create<HomeUIFeature>());
 
-            //Add(systems.Create<PeriodicallySaveProgressSystem>(MetaConstants.SaveProgressPeriodSeconds));
+            Add(systems.Create<PeriodicallySaveProgressSystem>(MetaConstants.SaveProgressPeriodSeconds));
 
             Add(systems.Create<CleanupTickSystem>());
             Add(systems.Create<ProcessDestructedFeature>());

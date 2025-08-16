@@ -6,7 +6,7 @@ using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.States.StateMachine;
 using Code.Progress.Data;
 using Code.Progress.Provider;
-//using Code.Progress.SaveLoad;
+using Code.Progress.SaveLoad;
 
 namespace Code.Infrastructure.States.GameStates
 {
@@ -14,23 +14,18 @@ namespace Code.Infrastructure.States.GameStates
     {
         private readonly IGameStateMachine _stateMachine;
         private readonly IStaticDataService _staticDataService;
-        private readonly IProgressProvider _progressProvider;
-        private readonly ITimeService _timeService;
 
-        //private readonly ISaveLoadService _saveLoadService;
+        private readonly ISaveLoadService _saveLoadService;
 
         public InitializeProgressState(
           IGameStateMachine stateMachine,
           IProgressProvider progressProvider,
-          //ISaveLoadService saveLoadService,
-          IStaticDataService staticDataService,
-          ITimeService timeService)
+          ISaveLoadService saveLoadService,
+          IStaticDataService staticDataService)
         {
-            //_saveLoadService = saveLoadService;
+            _saveLoadService = saveLoadService;
             _stateMachine = stateMachine;
             _staticDataService = staticDataService;
-            _progressProvider = progressProvider;
-            _timeService = timeService;
         }
 
         public override void Enter()
@@ -42,19 +37,15 @@ namespace Code.Infrastructure.States.GameStates
 
         private void InitializeProgress()
         {
-            //if (_saveLoadService.HasSavedProgress)
-            //  _saveLoadService.LoadProgress();
-            //else
-            CreateNewProgress();
+            if(_saveLoadService.HasSavedProgress)
+                _saveLoadService.LoadProgress();
+            else
+                CreateNewProgress();
         }
 
         private void CreateNewProgress()
         {
-            _progressProvider.SetProgressData(new ProgressData()
-            {
-                LastSimulationTickTime = _timeService.UtcNow
-            });
-            //_saveLoadService.CreateProgress();
+            _saveLoadService.CreateProgress();
 
             var entity = CreateMetaEntity.Empty();
 
