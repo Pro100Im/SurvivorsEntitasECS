@@ -9,12 +9,12 @@ namespace Code.Meta
   {
     public HomeUIFeature(ISystemFactory systems)
     {
-            //Add(systems.Create<InitializePurchasedItemsSystem>());
+            Add(systems.Create<InitializePurchasedItemsSystem>());
 
-            //Add(systems.Create<RefreshGoldGainBoostSystem>());
+            Add(systems.Create<RefreshGoldGainBoostSystem>());
             Add(systems.Create<RefreshGoldSystem>());
 
-            //Add(systems.Create<ShopFeature>());
+            Add(systems.Create<ShopFeature>());
         }
   }
 }

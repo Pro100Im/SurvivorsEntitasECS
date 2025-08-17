@@ -31,6 +31,7 @@ namespace Code.Meta.UI.GoldHolder.Systems
         private void UpdateGoldGainBoost(List<MetaEntity> boosters)
         {
             float goldGainBoost = 0f;
+
             foreach(MetaEntity booster in boosters)
             {
                 if(booster.hasGoldGainBoost)

@@ -11,94 +11,94 @@ using Zenject;
 
 namespace Code.Meta.UI.Shop
 {
-  public class ShopWindow : BaseWindow
-  {
-    public Transform ItemsLayout;
-    public Button CloseButton;
-    public GameObject NoItemsAvailable;
-    
-    private IWindowService _windowService;
-    private IShopUIFactory _shopUIFactory;
-    private IShopUIService _shop;
-    private IStorageUIService _storage;
-
-    private readonly List<ShopItem> _items = new();
-
-    [Inject]
-    private void Construct(
-      IWindowService windowService, 
-      IShopUIFactory shopUIFactory, 
-      IShopUIService shop,
-      IStorageUIService storage) 
+    public class ShopWindow : BaseWindow
     {
-      Id = WindowId.ShopWindow;
+        public Transform ItemsLayout;
+        public Button CloseButton;
+        public GameObject NoItemsAvailable;
 
-      _shopUIFactory = shopUIFactory;
-      _windowService = windowService;
-      _shop = shop;
-      _storage = storage;
+        private IWindowService _windowService;
+        private IShopUIFactory _shopUIFactory;
+        private IShopUIService _shop;
+        private IStorageUIService _storage;
+
+        private readonly List<ShopItem> _items = new();
+
+        [Inject]
+        private void Construct(
+          IWindowService windowService,
+          IShopUIFactory shopUIFactory,
+          IShopUIService shop,
+          IStorageUIService storage)
+        {
+            Id = WindowId.ShopWindow;
+
+            _shopUIFactory = shopUIFactory;
+            _windowService = windowService;
+            _shop = shop;
+            _storage = storage;
+        }
+
+        protected override void Initialize() =>
+          CloseButton.onClick.AddListener(Close);
+
+        protected override void SubscribeUpdates()
+        {
+            _shop.ShopChanged += Refresh;
+            _storage.GoldBoostChanged += UpdateBoostersState;
+
+            Refresh();
+        }
+
+        protected override void UnsubscribeUpdates()
+        {
+            _shop.ShopChanged -= Refresh;
+        }
+
+
+        private void Refresh()
+        {
+            ClearItems();
+
+            List<ShopItemConfig> availableConfigs = _shop.GetAvailableShopItems;
+
+            NoItemsAvailable.SetActive(availableConfigs.Count == 0);
+
+            FillItems(availableConfigs);
+
+            UpdateBoostersState();
+        }
+
+        protected override void Cleanup()
+        {
+            base.Cleanup();
+
+            CloseButton.onClick.RemoveListener(Close);
+        }
+
+        private void FillItems(List<ShopItemConfig> availableItems)
+        {
+            foreach(ShopItemConfig shopItemConfig in availableItems)
+                _items.Add(_shopUIFactory.CreateShopItem(shopItemConfig, ItemsLayout));
+        }
+
+        private void UpdateBoostersState()
+        {
+            bool itemsCanBeBought = Math.Abs(_storage.GoldGainBoost - 0) <= float.Epsilon;
+
+            foreach(ShopItem shopItem in _items)
+                shopItem.UpdateAvailability(itemsCanBeBought);
+        }
+
+        private void ClearItems()
+        {
+            _items.ForEach(x => Destroy(x.gameObject));
+            _items.Clear();
+        }
+
+        private void Close()
+        {
+            _windowService.Close(Id);
+        }
     }
-
-    protected override void Initialize() => 
-      CloseButton.onClick.AddListener(Close);
-
-    protected override void SubscribeUpdates()
-    {
-      _shop.ShopChanged += Refresh;
-      _storage.GoldBoostChanged += UpdateBoostersState;
-      
-      Refresh();
-    }
-
-    protected override void UnsubscribeUpdates()
-    {
-      _shop.ShopChanged -= Refresh;
-    }
-
-
-    private void Refresh()
-    {
-      ClearItems();
-
-      List<ShopItemConfig> availableConfigs = _shop.GetAvailableShopItems;
-      
-      NoItemsAvailable.SetActive(availableConfigs.Count == 0);
-
-      FillItems(availableConfigs);
-
-      UpdateBoostersState();
-    }
-
-    protected override void Cleanup()
-    {
-      base.Cleanup();
-      
-      CloseButton.onClick.RemoveListener(Close);
-    }
-
-    private void FillItems(List<ShopItemConfig> availableItems)
-    {
-      foreach (ShopItemConfig shopItemConfig in availableItems) 
-        _items.Add(_shopUIFactory.CreateShopItem(shopItemConfig, ItemsLayout));
-    }
-
-    private void UpdateBoostersState()
-    {
-      bool itemsCanBeBought = Math.Abs(_storage.GoldGainBoost - 0) <= float.Epsilon;
-
-      foreach (ShopItem shopItem in _items) 
-        shopItem.UpdateAvailability(itemsCanBeBought);
-    }
-
-    private void ClearItems()
-    {
-      _items.ForEach(x => Destroy(x.gameObject));
-      _items.Clear();
-    }
-
-    private void Close()
-    {
-      _windowService.Close(Id);
-    }
-  }
 }
