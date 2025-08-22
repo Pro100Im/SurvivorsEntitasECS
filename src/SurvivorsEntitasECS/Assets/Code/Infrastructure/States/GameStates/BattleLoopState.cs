@@ -1,6 +1,8 @@
 using Code.GamePlay.Features;
+using Code.GamePlay.Input;
 using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.Systems;
+using System.Collections;
 
 namespace Code.Infrastructure.States.GameStates
 {
@@ -8,6 +10,7 @@ namespace Code.Infrastructure.States.GameStates
     {
         private readonly ISystemFactory _systems;
         private readonly GameContext _gameContext;
+
         private BattleFeature _battleFeature;
 
         public BattleLoopState(ISystemFactory systems, GameContext gameContext)
@@ -24,8 +27,8 @@ namespace Code.Infrastructure.States.GameStates
 
         public void Update()
         {
-            _battleFeature.Execute();
-            _battleFeature.Cleanup();
+            _battleFeature?.Execute();
+            _battleFeature?.Cleanup();
         }
 
         public void Exit()

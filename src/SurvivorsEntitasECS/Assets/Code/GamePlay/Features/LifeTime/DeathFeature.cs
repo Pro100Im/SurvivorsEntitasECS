@@ -1,4 +1,5 @@
 using Code.Gameplay.Features.Lifetime.Systems;
+using Code.Gameplay.GameOver.Systems;
 using Code.GamePlay.Features.LifeTime.Systems;
 using Code.Infrastructure.Systems;
 
@@ -10,6 +11,7 @@ namespace Code.GamePlay.Features.LifeTime
         {
             Add(systemFactory.Create<MarkDeadSystem>());
             Add(systemFactory.Create<UnapplyStatusesOfDeadTargetSystem>());
+            Add(systemFactory.Create<GameOverOnHeroDeathSystem>());
         }
     }
 }
