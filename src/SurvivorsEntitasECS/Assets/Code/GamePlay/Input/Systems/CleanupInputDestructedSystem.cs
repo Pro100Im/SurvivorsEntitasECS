@@ -13,8 +13,8 @@ namespace Code.GamePlay.Input.Systems
 
         public void Cleanup()
         {
-            foreach(InputEntity entity in _entities.GetEntities(_buffer))
-                entity.Destroy();
+            //foreach(InputEntity entity in _entities.GetEntities(_buffer))
+            //    entity.Destroy();
         }
     }
 }
